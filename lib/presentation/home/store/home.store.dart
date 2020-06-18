@@ -32,5 +32,8 @@ class HomeStore extends RxController {
     }
   }
 
+  // TODO: Fazer o editar TODO
+  // TODO: Fazer o excluir TODO
+
   final todoList = <TodoModel>[].obs;
 }
