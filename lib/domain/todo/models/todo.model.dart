@@ -1,13 +1,15 @@
 import 'package:flutter/foundation.dart';
+import 'package:uuid/uuid.dart';
 
 class TodoModel {
-  int id;
+  String id;
   String title;
   String desc;
 
   TodoModel({
-    this.id,
     @required this.title,
     @required this.desc,
-  });
+  }) {
+    this.id = Uuid().v1();
+  }
 }

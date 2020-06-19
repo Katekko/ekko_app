@@ -1,18 +1,15 @@
-import 'package:arctekko/domain/todo/models/todo.model.dart';
-import 'package:arctekko/presentation/add_todo/store/add_todo.store.dart';
+import 'package:arctekko/presentation/edt_todo/store/edt_todo.store.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SaveButtonWidget extends StatelessWidget {
   void onPressed() {
-    AddTodoStore store = Get.find();
+    EdtTodoStore store = Get.find();
 
-    var createdTodo = TodoModel(
-      title: store.titleController.text,
-      desc: store.descController.text,
-    );
+    store.todo.title = store.titleController.text;
+    store.todo.desc = store.descController.text;
 
-    Get.back(result: {'todo': createdTodo});
+    Get.back(result: {'todo': store.todo});
   }
 
   @override

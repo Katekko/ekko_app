@@ -25,7 +25,7 @@ class Main extends StatelessWidget {
     return GetMaterialApp(
       title: 'Arctekko',
       initialRoute: initialRoute,
-      namedRoutes: Nav.routes,
+      getPages: Nav.routes,
     );
   }
 }

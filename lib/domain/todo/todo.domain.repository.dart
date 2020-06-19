@@ -15,4 +15,16 @@ class TodoDomainRepository {
       throw DefaultException(stacktrace);
     }
   }
+
+  Future<void> deleteTodo(TodoModel todo) async {
+    try {} catch (err, stacktrace) {
+      throw DefaultException(stacktrace);
+    }
+  }
+
+  Future<void> updateTodo(TodoModel todo) async {
+    try {} catch (err, stacktrace) {
+      throw DefaultException(stacktrace);
+    }
+  }
 }

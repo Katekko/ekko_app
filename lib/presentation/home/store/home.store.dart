@@ -32,8 +32,25 @@ class HomeStore extends RxController {
     }
   }
 
-  // TODO: Fazer o editar TODO
-  // TODO: Fazer o excluir TODO
+  Future<void> removeTodo(TodoModel todo) async {
+    try {
+      await _todoDomainService.removeTodo(todo);
+      todoList.remove(todo);
+    } catch (err) {
+      rethrow;
+    }
+  }
+
+  Future<void> editeTodo(TodoModel todo) async {
+    try {
+      await _todoDomainService.editTodo(todo);
+      var todoInList = todoList.firstWhere((t) => t.id == todo.id);
+      var indexOfTodo = todoList.value.indexOf(todoInList);
+      todoList[indexOfTodo] = todo;
+    } catch (err) {
+      rethrow;
+    }
+  }
 
   final todoList = <TodoModel>[].obs;
 }

@@ -5,4 +5,5 @@ class Routes {
 
   static const String HOME = 'home';
   static const String ADD_TODO = 'add-todo';
+  static const String EDT_TODO = 'edt-todo';
 }
