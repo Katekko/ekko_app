@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import 'infrastructure/navigation/navigation.dart';
 import 'infrastructure/navigation/routes.dart';
@@ -12,6 +13,7 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
+  await GetStorage.init();
   var initialRoute = await Routes.initialRoute;
   return runApp(Main(initialRoute));
 }

@@ -1,6 +1,8 @@
 import 'package:arctekko/domain/todo/models/todo.model.dart';
 import 'package:arctekko/domain/todo/todo.domain.service.dart';
+import 'package:arctekko/infrastructure/dal/dao/todo.dao.dart';
 import 'package:get/get.dart';
+import 'package:uuid/uuid.dart';
 
 class HomeStore extends RxController {
   TodoDomainService _todoDomainService;
@@ -12,6 +14,17 @@ class HomeStore extends RxController {
   @override
   void onInit() async {
     await fetchTodoList();
+
+    TodoDao(
+      id: Uuid().v4(),
+      desc: 'Funcionando opk',
+      title: 'titleeeae',
+    ).save();
+
+    var list = TodoDao().select();
+    for (var l in list) {
+      print(l.toMap());
+    }
   }
 
   Future<void> fetchTodoList() async {
