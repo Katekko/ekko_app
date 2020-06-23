@@ -4,19 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TodoListWidget extends StatelessWidget {
-  final HomeStore _store = Get.find();
-
   @override
   Widget build(BuildContext context) {
-    return GetX(
-      builder: (_) => _store.todoList.value.isNotEmpty
+    return GetX<HomeStore>(
+      builder: (store) => store.todoList.value.isNotEmpty
           ? ListView.builder(
               padding: EdgeInsets.all(30),
-              itemCount: _store.todoList.length,
+              itemCount: store.todoList.length,
               itemBuilder: (_, index) => Padding(
                 padding: EdgeInsets.only(bottom: 19),
                 child: TodoItemListWidget(
-                  todo: _store.todoList[index],
+                  todo: store.todoList[index],
                 ),
               ),
             )
