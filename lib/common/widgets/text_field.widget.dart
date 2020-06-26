@@ -6,8 +6,8 @@ class TextFieldWidget extends StatelessWidget {
   final Function(String) onChange;
   TextFieldWidget({
     this.controller,
+    this.onChange,
     @required this.hintText,
-    @required this.onChange,
   });
 
   @override
