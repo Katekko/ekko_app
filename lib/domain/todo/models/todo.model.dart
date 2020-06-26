@@ -7,9 +7,14 @@ class TodoModel {
   String desc;
 
   TodoModel({
+    String id,
     @required this.title,
     @required this.desc,
   }) {
-    this.id = Uuid().v1();
+    this.id = id ?? Uuid().v1();
+  }
+
+  TodoModel copy() {
+    return TodoModel(id: this.id, title: this.title, desc: this.desc);
   }
 }

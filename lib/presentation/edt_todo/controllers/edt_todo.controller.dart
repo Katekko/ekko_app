@@ -9,8 +9,8 @@ class EdtTodoController extends GetxController {
     TodoDomainService todoDomainService, {
     Map screenArgs,
   }) {
-    var todo = screenArgs['todo'] as TodoModel;
-    this.todo = todo;
+    var todoToEdt = screenArgs['todo'] as TodoModel;
+    this.todo = todoToEdt.copy();
   }
 
   void onChangeTitle(String val) => todo.title = val;
