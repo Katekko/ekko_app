@@ -2,9 +2,9 @@ import 'package:arctekko/domain/todo/models/todo.model.dart';
 import 'package:arctekko/domain/todo/todo.domain.service.dart';
 import 'package:get/get.dart';
 
-class HomeStore extends GetxController {
+class HomeController extends GetxController {
   TodoDomainService _todoDomainService;
-  HomeStore(
+  HomeController(
     this._todoDomainService, {
     Map<String, dynamic> screenArgs,
   });

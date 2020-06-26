@@ -1,4 +1,4 @@
-import 'package:arctekko/presentation/home/store/home.store.dart';
+import 'package:arctekko/presentation/home/controllers/home.controller.dart';
 import 'package:arctekko/presentation/home/widgets/todo_item_list.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class TodoListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetX<HomeStore>(
+    return GetX<HomeController>(
       builder: (store) => store.todoList.value.isNotEmpty
           ? ListView.builder(
               padding: EdgeInsets.all(30),

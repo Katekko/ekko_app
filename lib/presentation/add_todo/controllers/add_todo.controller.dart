@@ -2,10 +2,10 @@ import 'package:arctekko/domain/todo/todo.domain.service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class AddTodoStore extends GetxController {
+class AddTodoController extends GetxController {
   TextEditingController _titleController;
   TextEditingController _descController;
-  AddTodoStore(
+  AddTodoController(
     TodoDomainService todoDomainService, {
     Map screenArgs,
   }) {

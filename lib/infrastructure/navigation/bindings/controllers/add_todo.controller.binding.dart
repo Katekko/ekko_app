@@ -1,13 +1,13 @@
 import 'package:arctekko/infrastructure/navigation/bindings/domains/todo.domain.bindings.dart';
-import 'package:arctekko/presentation/home/store/home.store.dart';
+import 'package:arctekko/presentation/add_todo/controllers/add_todo.controller.dart';
 import 'package:get/get.dart';
 
-class HomeStoreBinding extends Bindings {
+class AddTodoControllerBinding extends Bindings {
   @override
   void dependencies() {
     var todoDomainBinding = TodoDomainBinding();
-    Get.lazyPut<HomeStore>(
-      () => HomeStore(
+    Get.lazyPut<AddTodoController>(
+      () => AddTodoController(
         todoDomainBinding.domainService,
         screenArgs: Get.arguments,
       ),

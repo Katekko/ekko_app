@@ -1,15 +1,13 @@
-import 'package:arctekko/presentation/edt_todo/store/edt_todo.store.dart';
+import 'package:arctekko/presentation/edt_todo/controllers/edt_todo.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SaveButtonWidget extends StatelessWidget {
+class SaveButtonWidget extends GetView<EdtTodoController> {
   void onPressed() {
-    EdtTodoStore store = Get.find();
+    controller.todo.title = controller.titleController.text;
+    controller.todo.desc = controller.descController.text;
 
-    store.todo.title = store.titleController.text;
-    store.todo.desc = store.descController.text;
-
-    Get.back(result: {'todo': store.todo});
+    Get.back(result: {'todo': controller.todo});
   }
 
   @override

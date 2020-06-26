@@ -2,24 +2,22 @@ import 'package:arctekko/common/utils/snackbar.util.dart';
 import 'package:arctekko/common/widgets/confirm_dialog.widget.dart';
 import 'package:arctekko/domain/todo/models/todo.model.dart';
 import 'package:arctekko/infrastructure/navigation/routes.dart';
-import 'package:arctekko/presentation/home/store/home.store.dart';
+import 'package:arctekko/presentation/home/controllers/home.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class TodoItemListWidget extends StatelessWidget {
+class TodoItemListWidget extends GetView<HomeController> {
   final TodoModel todo;
   TodoItemListWidget({@required this.todo});
 
   void onLongPressTodo() async {
     try {
-      HomeStore store = Get.find();
-
       var result = await Get.dialog(ConfirmDialogWidget(
         title: 'Delete Todo?',
         desc: 'Wanna delete this todo?',
       ));
       if (result != null && result) {
-        await store.removeTodo(todo);
+        await controller.removeTodo(todo);
       }
     } catch (err) {
       SnackbarUtil.showError(err.message);
@@ -28,7 +26,6 @@ class TodoItemListWidget extends StatelessWidget {
 
   void onDoubleTapTodo() async {
     try {
-      HomeStore store = Get.find();
       var result = await Get.toNamed(
         Routes.EDT_TODO,
         arguments: {'todo': todo},
@@ -36,7 +33,7 @@ class TodoItemListWidget extends StatelessWidget {
 
       if (result != null) {
         var editedTodo = result['todo'] as TodoModel;
-        await store.editeTodo(editedTodo);
+        await controller.editeTodo(editedTodo);
       }
     } catch (err) {
       SnackbarUtil.showError(err.message);
