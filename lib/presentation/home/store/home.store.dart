@@ -2,7 +2,7 @@ import 'package:arctekko/domain/todo/models/todo.model.dart';
 import 'package:arctekko/domain/todo/todo.domain.service.dart';
 import 'package:get/get.dart';
 
-class HomeStore extends RxController {
+class HomeStore extends GetxController {
   TodoDomainService _todoDomainService;
   HomeStore(
     this._todoDomainService, {

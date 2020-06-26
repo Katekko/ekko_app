@@ -3,7 +3,7 @@ import 'package:arctekko/domain/todo/todo.domain.service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-class EdtTodoStore extends RxController {
+class EdtTodoStore extends GetxController {
   TextEditingController _titleController;
   TextEditingController _descController;
   TodoModel todo;
