@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 class SaveButtonWidget extends GetView<AddTodoController> {
   void onPressed() {
     var createdTodo = TodoModel(
-      title: controller.titleController.text,
-      desc: controller.descController.text,
+      title: controller.title,
+      desc: controller.description,
     );
 
     Get.back(result: {'todo': createdTodo});

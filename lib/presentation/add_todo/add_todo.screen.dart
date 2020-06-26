@@ -19,12 +19,12 @@ class AddTodoScreen extends GetView<AddTodoController> {
           children: [
             TextFieldWidget(
               hintText: 'Titulo',
-              controller: controller.titleController,
+              onChange: controller.onChangeTitle,
             ),
             SizedBox(height: 20),
             TextFieldWidget(
               hintText: 'Descrição',
-              controller: controller.descController,
+              onChange: controller.onChangeDescription,
             ),
             SizedBox(height: 20),
             SaveButtonWidget(),
