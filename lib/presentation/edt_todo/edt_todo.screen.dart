@@ -19,12 +19,14 @@ class EdtTodoScreen extends GetView<EdtTodoController> {
           children: [
             TextFieldWidget(
               hintText: 'Titulo',
-              controller: controller.titleController,
+              initialValue: controller.todo.title,
+              onChange: controller.onChangeTitle,
             ),
             SizedBox(height: 20),
             TextFieldWidget(
               hintText: 'Descrição',
-              controller: controller.descController,
+              initialValue: controller.todo.desc,
+              onChange: controller.onChangeDescription,
             ),
             SizedBox(height: 20),
             SaveButtonWidget(),

@@ -4,9 +4,6 @@ import 'package:get/get.dart';
 
 class SaveButtonWidget extends GetView<EdtTodoController> {
   void onPressed() {
-    controller.todo.title = controller.titleController.text;
-    controller.todo.desc = controller.descController.text;
-
     Get.back(result: {'todo': controller.todo});
   }
 
