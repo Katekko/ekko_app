@@ -1,6 +1,5 @@
 import 'package:arctekko/domain/todo/models/todo.model.dart';
 import 'package:arctekko/domain/todo/todo.domain.service.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 class EdtTodoController extends GetxController {
