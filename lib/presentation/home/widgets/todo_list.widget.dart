@@ -7,14 +7,14 @@ class TodoListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetX<HomeController>(
-      builder: (store) => store.todoList.value.isNotEmpty
+      builder: (controller) => controller.todoList.value.isNotEmpty
           ? ListView.builder(
               padding: EdgeInsets.all(30),
-              itemCount: store.todoList.length,
+              itemCount: controller.todoList.length,
               itemBuilder: (_, index) => Padding(
                 padding: EdgeInsets.only(bottom: 19),
                 child: TodoItemListWidget(
-                  todo: store.todoList[index],
+                  todo: controller.todoList[index],
                 ),
               ),
             )

@@ -8,7 +8,8 @@ class TodoDomainService {
 
   Future<List<TodoModel>> fetchTodoList() async {
     try {
-      return await _repository.getTodos();
+      var todos = await _repository.getTodos();
+      return todos.map<TodoModel>((e) => TodoModel.fromDao(e)).toList();
     } catch (err) {
       rethrow;
     }
@@ -32,7 +33,7 @@ class TodoDomainService {
 
   Future<void> editTodo(TodoModel todo) async {
     try {
-      await _repository.updateTodo(todo);
+      await _repository.saveTodo(todo);
     } catch (err) {
       rethrow;
     }

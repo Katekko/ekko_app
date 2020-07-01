@@ -11,7 +11,6 @@ class SnackbarUtil {
       ),
       message: message,
       backgroundColor: Colors.green[600],
-      instantInit: true,
     );
   }
 
@@ -24,7 +23,6 @@ class SnackbarUtil {
       ),
       message: message,
       backgroundColor: Colors.orange[900],
-      instantInit: true,
     );
   }
 
@@ -37,7 +35,6 @@ class SnackbarUtil {
       ),
       message: message,
       backgroundColor: Colors.redAccent[700],
-      instantInit: true,
     );
   }
 }

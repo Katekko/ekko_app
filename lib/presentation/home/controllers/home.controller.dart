@@ -43,7 +43,7 @@ class HomeController extends GetxController {
 
   Future<void> editeTodo(TodoModel todo) async {
     try {
-      await _todoDomainService.editTodo(todo);
+      await _todoDomainService.addTodo(todo);
       var todoInList = todoList.firstWhere((t) => t.id == todo.id);
       var indexOfTodo = todoList.value.indexOf(todoInList);
       todoList[indexOfTodo] = todo;
