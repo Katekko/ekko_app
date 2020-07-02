@@ -60,6 +60,8 @@ class TodoItemListWidget extends GetView<HomeController> {
                 '${todo.desc}',
                 style: Theme.of(context).textTheme.subtitle1,
               ),
+              Divider(),
+              Text('${todo.category.name}')
             ],
           ),
         ),

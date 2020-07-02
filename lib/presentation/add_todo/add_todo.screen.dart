@@ -3,6 +3,7 @@ import 'package:arctekko/presentation/add_todo/controllers/add_todo.controller.d
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'widgets/category_dropdown.widget.dart';
 import 'widgets/save_button.widget.dart';
 
 class AddTodoScreen extends GetView<AddTodoController> {
@@ -25,6 +26,14 @@ class AddTodoScreen extends GetView<AddTodoController> {
             TextFieldWidget(
               hintText: 'Descrição',
               onChange: controller.onChangeDescription,
+            ),
+            SizedBox(height: 50),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Category:'),
+                CategoryDropdownWidget(),
+              ],
             ),
             SizedBox(height: 20),
             SaveButtonWidget(),

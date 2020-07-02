@@ -1,3 +1,4 @@
+import 'package:arctekko/infrastructure/dal/dao/category.dao.dart';
 import 'package:arctekko/infrastructure/dal/dao/todo.dao.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -18,7 +19,8 @@ void main() async {
   var dir = await getApplicationDocumentsDirectory();
   Hive
     ..init(dir.path)
-    ..registerAdapter(TodoDaoAdapter());
+    ..registerAdapter(TodoDaoAdapter())
+    ..registerAdapter(CategoryDaoAdapter());
 
   var initialRoute = await Routes.initialRoute;
   return runApp(Main(initialRoute));

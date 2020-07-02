@@ -1,39 +1,36 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'todo.dao.dart';
+part of 'category.dao.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class TodoDaoAdapter extends TypeAdapter<TodoDao> {
+class CategoryDaoAdapter extends TypeAdapter<CategoryDao> {
   @override
-  final typeId = 0;
+  final typeId = 1;
 
   @override
-  TodoDao read(BinaryReader reader) {
+  CategoryDao read(BinaryReader reader) {
     var numOfFields = reader.readByte();
     var fields = <int, dynamic>{
       for (var i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return TodoDao()
+    return CategoryDao()
       ..id = fields[0] as String
-      ..title = fields[1] as String
-      ..desc = fields[2] as String
-      ..categoryDao = fields[3] as CategoryDao;
+      ..name = fields[1] as String
+      ..desc = fields[2] as String;
   }
 
   @override
-  void write(BinaryWriter writer, TodoDao obj) {
+  void write(BinaryWriter writer, CategoryDao obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.title)
+      ..write(obj.name)
       ..writeByte(2)
-      ..write(obj.desc)
-      ..writeByte(3)
-      ..write(obj.categoryDao);
+      ..write(obj.desc);
   }
 }

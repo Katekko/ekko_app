@@ -2,21 +2,16 @@ import 'package:arctekko/common/constants/table.constants.dart';
 import 'package:arctekko/common/interfaces/dao.interface.dart';
 import 'package:hive/hive.dart';
 
-import 'category.dao.dart';
+part 'category.dao.g.dart';
 
-part 'todo.dao.g.dart';
-
-@HiveType(typeId: 0)
-class TodoDao extends BaseDao<TodoDao> {
+@HiveType(typeId: 1)
+class CategoryDao extends BaseDao<CategoryDao> {
   @HiveField(0)
   String id;
 
   @HiveField(1)
-  String title;
+  String name;
 
   @HiveField(2)
   String desc;
-
-  @HiveField(3)
-  CategoryDao categoryDao;
 }

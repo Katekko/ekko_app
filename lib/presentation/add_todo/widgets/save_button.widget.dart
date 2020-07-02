@@ -8,6 +8,7 @@ class SaveButtonWidget extends GetView<AddTodoController> {
     var createdTodo = TodoModel(
       title: controller.title,
       desc: controller.description,
+      category: controller.currentCategory,
     );
 
     Get.back(result: {'todo': createdTodo});

@@ -1,17 +1,26 @@
+import 'package:arctekko/common/utils/snackbar.util.dart';
+import 'package:arctekko/domain/config/config.domain.service.dart';
 import 'package:arctekko/domain/todo/models/todo.model.dart';
 import 'package:arctekko/domain/todo/todo.domain.service.dart';
 import 'package:get/get.dart';
 
 class HomeController extends GetxController {
   TodoDomainService _todoDomainService;
+  ConfigDomainService _configDomainService;
   HomeController(
-    this._todoDomainService, {
+    this._todoDomainService,
+    this._configDomainService, {
     Map<String, dynamic> screenArgs,
   });
 
   @override
   void onInit() async {
-    await fetchTodoList();
+    try {
+      await _configDomainService.loadAllConfigs();
+      await fetchTodoList();
+    } catch (err) {
+      SnackbarUtil.showError(err.toString());
+    }
   }
 
   Future<void> fetchTodoList() async {

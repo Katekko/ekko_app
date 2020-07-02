@@ -1,3 +1,4 @@
+import 'package:arctekko/domain/todo/models/category.model.dart';
 import 'package:arctekko/domain/todo/todo.domain.repository.dart';
 
 import 'models/todo.model.dart';
@@ -34,6 +35,15 @@ class TodoDomainService {
   Future<void> editTodo(TodoModel todo) async {
     try {
       await _repository.saveTodo(todo);
+    } catch (err) {
+      rethrow;
+    }
+  }
+
+  Future<List<CategoryModel>> fetchCategories() async {
+    try {
+      var daos = await _repository.getCategories();
+      return daos.map<CategoryModel>((e) => CategoryModel.fromDao(e)).toList();
     } catch (err) {
       rethrow;
     }
