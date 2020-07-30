@@ -1,4 +1,4 @@
-package com.example.social_app
+package com.gyanburuworld.arctekko
 
 import io.flutter.embedding.android.FlutterActivity
 
