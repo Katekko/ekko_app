@@ -16,7 +16,7 @@ class _AuthService implements AuthService {
   String baseUrl;
 
   @override
-  autenticarUsuario(body) async {
+  authenticateUser(body) async {
     ArgumentError.checkNotNull(body, 'body');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -31,7 +31,7 @@ class _AuthService implements AuthService {
             extra: _extra,
             baseUrl: baseUrl),
         data: _data);
-    final value = AutenticarUsuarioResponse.fromJson(_result.data);
+    final value = AuthenticateUserResponse.fromJson(_result.data);
     return value;
   }
 }

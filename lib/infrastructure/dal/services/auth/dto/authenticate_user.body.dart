@@ -1,14 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'autenticar_usuario.body.g.dart';
+part 'authenticate_user.body.g.dart';
 
 @JsonSerializable()
-class AutenticarUsuarioBody {
+class AuthenticateUserBody {
   String login;
   String password;
 
-  AutenticarUsuarioBody({
+  AuthenticateUserBody({
     @required String login,
     @required String password,
   }) {
@@ -16,8 +16,8 @@ class AutenticarUsuarioBody {
     this.password = password.trim();
   }
 
-  factory AutenticarUsuarioBody.fromJson(Map<String, dynamic> json) =>
-      _$AutenticarUsuarioBodyFromJson(json);
+  factory AuthenticateUserBody.fromJson(Map<String, dynamic> json) =>
+      _$AuthenticateUserBodyFromJson(json);
 
-  Map<String, dynamic> toJson() => _$AutenticarUsuarioBodyToJson(this);
+  Map<String, dynamic> toJson() => _$AuthenticateUserBodyToJson(this);
 }

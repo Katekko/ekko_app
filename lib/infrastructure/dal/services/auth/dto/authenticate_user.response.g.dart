@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'autenticar_usuario.response.dart';
+part of 'authenticate_user.response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AutenticarUsuarioResponse _$AutenticarUsuarioResponseFromJson(
+AuthenticateUserResponse _$AuthenticateUserResponseFromJson(
     Map<String, dynamic> json) {
-  return AutenticarUsuarioResponse(
+  return AuthenticateUserResponse(
     id: json['id'] as int,
     name: json['name'] as String,
     token: json['token'] as String,
   );
 }
 
-Map<String, dynamic> _$AutenticarUsuarioResponseToJson(
-        AutenticarUsuarioResponse instance) =>
+Map<String, dynamic> _$AuthenticateUserResponseToJson(
+        AuthenticateUserResponse instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

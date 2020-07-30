@@ -1,21 +1,20 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'autenticar_usuario.body.dart';
+part of 'authenticate_user.body.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-AutenticarUsuarioBody _$AutenticarUsuarioBodyFromJson(
-    Map<String, dynamic> json) {
-  return AutenticarUsuarioBody(
+AuthenticateUserBody _$AuthenticateUserBodyFromJson(Map<String, dynamic> json) {
+  return AuthenticateUserBody(
     login: json['login'] as String,
     password: json['password'] as String,
   );
 }
 
-Map<String, dynamic> _$AutenticarUsuarioBodyToJson(
-        AutenticarUsuarioBody instance) =>
+Map<String, dynamic> _$AuthenticateUserBodyToJson(
+        AuthenticateUserBody instance) =>
     <String, dynamic>{
       'login': instance.login,
       'password': instance.password,
