@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:social_app/infrastructure/navigation/routes.dart';
-import 'package:social_app/presentation/login/login.screen.dart';
+import 'package:arctekko/infrastructure/navigation/routes.dart';
+import 'package:arctekko/presentation/login/login.screen.dart';
 
 import '../../config.dart';
 import 'bindings/controllers/login.controller.binding.dart';
