@@ -1,11 +1,16 @@
-import 'package:flutter/foundation.dart';
 import 'package:hive/hive.dart';
 import 'package:darq/darq.dart';
 
 abstract class BaseDao<T> {
-  Future<void> save({@required String id, @required T value}) async {
+  Future<void> save(T value) async {
     var table = await Hive.openBox<T>(T.toString());
-    await table.put(id, value);
+    await table.put(value.toString(), value);
+  }
+
+  Future<void> saveAll(List<T> value) async {
+    var table = await Hive.openBox<T>(T.toString());
+    var map = value.toMap((e) => MapEntry(e.toString(), e));
+    await table.putAll(map);
   }
 
   Future<void> delete({String id, Function(T value) where}) async {
