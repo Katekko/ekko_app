@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:arctekko/infrastructure/navigation/routes.dart';
-import 'package:arctekko/presentation/login/login.screen.dart';
 
 import '../../config.dart';
-import 'bindings/controllers/login.controller.binding.dart';
+import '../../presentation/screens.dart';
+import 'bindings/controllers/controllers.dart';
+import 'routes.dart';
 
 class EnvironmentsBadge extends StatelessWidget {
   final Widget child;
-  EnvironmentsBadge({@required this.child});
+  const EnvironmentsBadge({@required this.child});
   @override
   Widget build(BuildContext context) {
     var env = ConfigEnvironments.getEnvironments()['env'];
