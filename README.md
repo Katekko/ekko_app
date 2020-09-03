@@ -10,5 +10,6 @@ A boirlerplate to save your time building something new.
 - Auth domain boirleplate
 - HIVE Database
 - Retrofit to connect with your webservices
+- Way to translate strings per route
 
 
