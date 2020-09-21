@@ -4,7 +4,7 @@ import 'package:arctekko/domain/core/interfaces/dao.interface.dart';
 part 'user.dao.g.dart';
 
 @HiveType(typeId: 0)
-class UserDao extends BaseDao<UserDao> with BaseIdDao<UserDao> {
+class UserDao with BaseDao<UserDao> {
   @HiveField(0)
   int id;
 

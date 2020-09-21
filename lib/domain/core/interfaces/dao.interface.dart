@@ -1,42 +1,56 @@
 import 'package:hive/hive.dart';
 import 'package:darq/darq.dart';
 
-abstract class BaseDao<T> {
-  Future<void> save(BaseIdDao<T> value) async {
-    var table = await Hive.openBox<BaseIdDao<T>>(T.toString());
-    await table.put(value.tableId, value);
+mixin BaseDao<T> {
+  dynamic get tableId;
+
+  Future<void> save() async {
+    var table = await Hive.openBox<BaseDao<T>>(T.toString());
+    await table.put(tableId, this);
   }
 
-  Future<void> saveAll(List<BaseIdDao<T>> value) async {
-    var table = await Hive.openBox<BaseIdDao<T>>(T.toString());
+  Future<void> saveAll(List<BaseDao<T>> value) async {
+    var table = await Hive.openBox<BaseDao<T>>(T.toString());
     var map = value.toMap((e) => MapEntry(e.tableId, e));
     await table.putAll(map);
   }
 
-  Future<void> delete({String id, Function(BaseIdDao<T> value) where}) async {
-    var table = await Hive.openBox<BaseIdDao<T>>(T.toString());
-    if (id != null) {
+  /// Pass ID to delete the ITEM that match the ID
+  ///
+  /// Pass the where to delete a range of items
+  ///
+  /// Pass nothing to use the tableID that class holds
+  Future<void> delete({dynamic id, Function(T value) where}) async {
+    var table = await Hive.openBox<BaseDao<T>>(T.toString());
+    if (tableId != null) {
+      await table.delete(tableId);
+    } else if (id != null) {
       await table.delete(id);
     } else if (where != null) {
-      var items = table.values.where(where);
-      items.forEach((i) async => await table.delete(i.toString()));
+      var items = List<T>.from(table.values);
+      items = items.where(where).toList();
+      var itemsIterable = List<BaseDao<T>>.from(items);
+      for (var item in itemsIterable) {
+        await table.delete(item.tableId);
+      }
     }
   }
 
-  Future<BaseIdDao<T>> selectById(String id) async {
-    var table = await Hive.openBox<BaseIdDao<T>>(T.toString());
+  Future<T> selectById(dynamic id) async {
+    var table = await Hive.openBox<BaseDao<T>>(T.toString());
     var key = table.keys.firstWhere((k) => k == id, orElse: () => null);
     var value = table.get(key ?? '');
-    return value;
+    return value as T;
   }
 
-  Future<List<BaseIdDao<T>>> select(
-    Function(BaseIdDao<T> value) where, {
-    dynamic Function(BaseIdDao<T>) orderBy,
+  Future<List<T>> select(
+    Function(T value) where, {
+    dynamic Function(T) orderBy,
     int page,
   }) async {
-    var table = await Hive.openBox<BaseIdDao<T>>(T.toString());
-    var items = table.values.where(where).toList();
+    var table = await Hive.openBox<BaseDao<T>>(T.toString());
+    var items = List<T>.from(table.values);
+    items = items.where(where).toList();
     if (orderBy != null) {
       items = items.orderBy(orderBy).toList();
     }
@@ -51,22 +65,18 @@ abstract class BaseDao<T> {
       }
     }
 
-    return items;
+    return List<T>.from(items);
   }
 
   /// Return a list, if don't have any items return a empty list
-  Future<List<BaseIdDao<T>>> selectAll() async {
-    var table = await Hive.openBox<BaseIdDao<T>>(T.toString());
+  Future<List<T>> selectAll() async {
+    var table = await Hive.openBox<BaseDao<T>>(T.toString());
     var values = table.values.toList();
-    return values;
+    return List<T>.from(values);
   }
 
   Future<void> clear() async {
-    var table = await Hive.openBox<BaseIdDao<T>>(T.toString());
+    var table = await Hive.openBox<BaseDao<T>>(T.toString());
     await table.clear();
   }
-}
-
-mixin BaseIdDao<T> {
-  dynamic get tableId;
 }

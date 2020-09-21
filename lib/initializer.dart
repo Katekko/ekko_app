@@ -1,3 +1,4 @@
+import 'package:arctekko/infrastructure/dal/daos/user.dao.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -43,7 +44,9 @@ class Initializer {
 
   static Future<void> _initHive() async {
     var dir = await getApplicationDocumentsDirectory();
-    Hive..init(dir.path);
+    Hive
+      ..init(dir.path)
+      ..registerAdapter(UserDaoAdapter());
   }
 
   static void _initScreenPreference() {
