@@ -1,4 +1,4 @@
-# Arctekko
+# Ekko
 
 A boirlerplate to save your time building something new.
 
