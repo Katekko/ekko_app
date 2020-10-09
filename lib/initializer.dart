@@ -40,6 +40,7 @@ class Initializer {
 
   static Future<void> _initStorage() async {
     await GetStorage.init();
+    Get.put(GetStorage());
   }
 
   static Future<void> _initHive() async {
