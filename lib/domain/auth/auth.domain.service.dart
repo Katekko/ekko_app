@@ -3,8 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'auth.domain.repository.dart';
 
 class AuthDomainService {
-  AuthDomainRepository _authDomainRepository;
-  AuthDomainService({@required AuthDomainRepository authDomainRepository}) {
-    _authDomainRepository = authDomainRepository;
-  }
+  final AuthDomainRepository _repository;
+  const AuthDomainService({@required AuthDomainRepository repository})
+      : _repository = repository;
 }
