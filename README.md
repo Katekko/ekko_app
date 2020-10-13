@@ -36,6 +36,7 @@ Controla diversos aspectos do seu aplicativo:
 - Biblioteca auxiliar para ajudar gerenciar listas em seu aplicativo
 
 ## TODOs
+- Criar autenticação de ponta a ponta utilizando JWT
 - Criar organização para utilizar WEB SOCKETS
 - Criar exemplos de aplicações utilizando essa estrutura
 
