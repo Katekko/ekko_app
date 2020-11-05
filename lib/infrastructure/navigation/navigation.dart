@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
 import '../../presentation/screens.dart';
-import 'bindings/controllers/controllers.dart';
+import 'bindings/controllers/controllers_bindings.dart';
 import 'routes.dart';
 
 class Nav {

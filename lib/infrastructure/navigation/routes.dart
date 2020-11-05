@@ -3,5 +3,5 @@ class Routes {
     return LOGIN;
   }
 
-  static const LOGIN = 'login';
+  static const LOGIN = '/login';
 }
