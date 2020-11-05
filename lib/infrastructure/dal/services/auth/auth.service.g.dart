@@ -16,14 +16,14 @@ class _AuthService implements AuthService {
   String baseUrl;
 
   @override
-  authenticateUser(body) async {
+  Future<AuthenticateUserResponse> authenticateUser(body) async {
     ArgumentError.checkNotNull(body, 'body');
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(body?.toJson() ?? <String, dynamic>{});
-    final Response<Map<String, dynamic>> _result = await _dio.request(
-        '/auth/login',
+    _data.removeWhere((k, v) => v == null);
+    final _result = await _dio.request<Map<String, dynamic>>('/auth/login',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'POST',

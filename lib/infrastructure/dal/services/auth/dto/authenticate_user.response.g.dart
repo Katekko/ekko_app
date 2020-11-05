@@ -9,16 +9,29 @@ part of 'authenticate_user.response.dart';
 AuthenticateUserResponse _$AuthenticateUserResponseFromJson(
     Map<String, dynamic> json) {
   return AuthenticateUserResponse(
-    id: json['id'] as int,
-    name: json['name'] as String,
-    token: json['token'] as String,
+    success: json['success'] as bool,
+    data: json['data'] == null ? null : DataResponse.fromJson(json['data']),
+    error: json['error'] as String,
   );
 }
 
 Map<String, dynamic> _$AuthenticateUserResponseToJson(
         AuthenticateUserResponse instance) =>
     <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
-      'token': instance.token,
+      'success': instance.success,
+      'data': instance.data,
+      'error': instance.error,
+    };
+
+DataResponse _$DataResponseFromJson(Map<String, dynamic> json) {
+  return DataResponse(
+    user: json['user'] == null
+        ? null
+        : UserData.fromJson(json['user'] as Map<String, dynamic>),
+  );
+}
+
+Map<String, dynamic> _$DataResponseToJson(DataResponse instance) =>
+    <String, dynamic>{
+      'user': instance.user,
     };
