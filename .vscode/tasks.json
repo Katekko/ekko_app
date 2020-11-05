@@ -6,7 +6,7 @@
         {
             "label": "build runner",
             "type": "shell",
-            "command": "flutter packages pub run build_runner build --delete-conflicting-outputs",
+            "command": "fvm flutter packages pub run build_runner build --delete-conflicting-outputs",
             "group": {
                 "kind": "build",
                 "isDefault": true
