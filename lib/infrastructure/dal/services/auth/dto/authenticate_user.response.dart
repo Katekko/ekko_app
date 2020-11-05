@@ -25,7 +25,8 @@ class AuthenticateUserResponse {
 @JsonSerializable()
 class DataResponse {
   final UserData user;
-  const DataResponse({@required this.user});
+  final String token;
+  const DataResponse({@required this.user, @required this.token});
 
   factory DataResponse.fromJson(json) => _$DataResponseFromJson(json);
 

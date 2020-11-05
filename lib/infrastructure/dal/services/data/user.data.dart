@@ -5,12 +5,12 @@ part 'user.data.g.dart';
 
 @JsonSerializable()
 class UserData {
-  final String id, name, token;
+  final String id, name, email;
 
   const UserData({
     @required this.id,
     @required this.name,
-    @required this.token,
+    @required this.email,
   });
 
   factory UserData.fromJson(Map<String, dynamic> json) =>
