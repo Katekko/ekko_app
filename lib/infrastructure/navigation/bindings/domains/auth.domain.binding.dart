@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:arctekko/domain/auth/auth.domain.repository.dart';
 import 'package:arctekko/domain/auth/auth.domain.service.dart';
@@ -10,9 +9,9 @@ class AuthDomainBinding {
   AuthDomainService get domain => _authDomainService;
 
   AuthDomainBinding() {
-    Dio dio = Get.find();
+    GetConnect dio = Get.find();
     GetStorage storage = Get.find();
-    var authService = AuthService(dio);
+    var authService = AuthService(connect: dio);
     var authDomainRepository = AuthDomainRepository(
       authService: authService,
       storage: storage,

@@ -6,7 +6,7 @@ class Environments {
 }
 
 class ConfigEnvironments {
-  static final String _currentEnvironments = Environments.LOCAL;
+  static final String _currentEnvironments = Environments.PRODUCTION;
   static List<Map<String, String>> _availableEnvironments = [
     {
       'env': Environments.LOCAL,
@@ -22,7 +22,7 @@ class ConfigEnvironments {
     },
     {
       'env': Environments.PRODUCTION,
-      'url': '',
+      'url': 'https://api-ekko.herokuapp.com/api/',
     },
   ];
 

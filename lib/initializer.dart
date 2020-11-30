@@ -1,5 +1,4 @@
 import 'package:arctekko/infrastructure/dal/daos/user.dao.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -14,7 +13,7 @@ class Initializer {
   static Future<void> init() async {
     try {
       WidgetsFlutterBinding.ensureInitialized();
-      _initDio();
+      _initGetConnect();
       _initGlobalLoading();
       _initScreenPreference();
       await _initStorage();
@@ -24,13 +23,13 @@ class Initializer {
     }
   }
 
-  static void _initDio() async {
-    var dio = Dio();
+  static void _initGetConnect() async {
+    var connect = GetConnect();
     var url = ConfigEnvironments.getEnvironments()['url'];
-    dio.options.baseUrl = url;
-    dio.options.sendTimeout = 10000;
+    connect.baseUrl = url;
+    connect.timeout = Duration(seconds: 10);
     Logger().i('Conectado em: $url');
-    Get.put(dio);
+    Get.put(connect);
   }
 
   static void _initGlobalLoading() {

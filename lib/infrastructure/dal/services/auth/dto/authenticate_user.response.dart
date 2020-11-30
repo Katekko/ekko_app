@@ -1,3 +1,4 @@
+import 'package:arctekko/infrastructure/dal/services/auth/data/token.data.dart';
 import 'package:arctekko/infrastructure/dal/services/data/user.data.dart';
 import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
@@ -25,7 +26,7 @@ class AuthenticateUserResponse {
 @JsonSerializable()
 class DataResponse {
   final UserData user;
-  final String token;
+  final TokenData token;
   const DataResponse({@required this.user, @required this.token});
 
   factory DataResponse.fromJson(json) => _$DataResponseFromJson(json);
