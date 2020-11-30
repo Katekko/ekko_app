@@ -8,7 +8,7 @@ class UserData {
   final int id;
   final String name, email;
 
-  const UserData({
+  UserData({
     @required this.id,
     @required this.name,
     @required this.email,

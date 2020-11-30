@@ -1,3 +1,5 @@
+import 'package:arctekko/domain/auth/models/token.model.dart';
+import 'package:arctekko/domain/core/constants/storage.constants.dart';
 import 'package:arctekko/infrastructure/dal/daos/user.dao.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -13,10 +15,10 @@ class Initializer {
   static Future<void> init() async {
     try {
       WidgetsFlutterBinding.ensureInitialized();
+      await _initStorage();
       _initGetConnect();
       _initGlobalLoading();
       _initScreenPreference();
-      await _initStorage();
       await _initHive();
     } catch (err) {
       rethrow;
@@ -28,6 +30,22 @@ class Initializer {
     var url = ConfigEnvironments.getEnvironments()['url'];
     connect.baseUrl = url;
     connect.timeout = Duration(seconds: 10);
+    connect.httpClient.maxAuthRetries = 3;
+    connect.httpClient.addAuthenticator((request) async {
+      GetStorage storage = Get.find();
+      if (storage.hasData(StorageConstants.TOKEN_AUTHORIZATION) &&
+          storage.hasData(StorageConstants.TOKEN_EXPIRATION)) {
+        var token = storage.read(StorageConstants.TOKEN_AUTHORIZATION);
+        var expiration = storage.read(StorageConstants.TOKEN_EXPIRATION);
+        var date = DateTime.parse(expiration);
+        var tokenModel = TokenModel(token: token, expiration: date);
+        if (tokenModel.isValid) {
+          request.headers['Authorization'] = "Bearer $token";
+        }
+      }
+      return request;
+    });
+
     Logger().i('Conectado em: $url');
     Get.put(connect);
   }

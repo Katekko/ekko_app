@@ -9,7 +9,7 @@ import 'dto/authenticate_user.response.dart';
 
 class AuthService {
   final GetConnect _connect;
-  const AuthService({@required GetConnect connect}) : _connect = connect;
+  AuthService({@required GetConnect connect}) : _connect = connect;
 
   Future<AuthenticateUserResponse> authenticateUser(
     AuthenticateUserBody body,
