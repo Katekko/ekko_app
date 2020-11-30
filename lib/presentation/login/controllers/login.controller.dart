@@ -20,10 +20,12 @@ class LoginController extends GetxController {
     super.onInit();
     try {
       _loadingController.isLoading = true;
-      var user = await _authDomainService.authenticateUser(
-        login: 'contato@gyanburuworld.com',
-        password: '123456',
-      );
+      // var user = await _authDomainService.authenticateUser(
+      //   login: 'contato@gyanburuworld.com',
+      //   password: '123456',
+      // );
+
+      var user = await _authDomainService.getUser();
 
       this.user.value = user;
     } on UserNotFoundException catch (err) {

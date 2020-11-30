@@ -2,21 +2,21 @@ import 'package:arctekko/domain/core/exceptions/default.exception.dart';
 import 'package:arctekko/domain/core/exceptions/user_not_found.exception.dart';
 import 'package:arctekko/infrastructure/translate/login.translate.dart';
 import 'package:flutter/foundation.dart';
-import 'package:get/get_connect/connect.dart';
 
+import '../base.service.dart';
 import 'dto/authenticate_user.body.dart';
 import 'dto/authenticate_user.response.dart';
 
 class AuthService {
-  final GetConnect _connect;
-  AuthService({@required GetConnect connect}) : _connect = connect;
+  final BaseService _base;
+  AuthService({@required BaseService base}) : _base = base;
 
   Future<AuthenticateUserResponse> authenticateUser(
     AuthenticateUserBody body,
   ) async {
-    var response = await _connect.post(
+    var response = await _base.post(
       'auth/login',
-      body.toJson(),
+      body: body.toJson(),
     );
 
     if (!response.hasError) {
@@ -26,7 +26,7 @@ class AuthService {
       switch (response.statusCode) {
         case 404:
           throw UserNotFoundException(
-            message: LoginTranslate.userNotFoundSnackbar,
+            message: LoginTranslate.userPasswordWrongSnackbar,
           );
         default:
           throw DefaultException(message: response.statusText);

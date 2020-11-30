@@ -1,5 +1,3 @@
-import 'package:arctekko/domain/auth/models/token.model.dart';
-import 'package:arctekko/domain/core/constants/storage.constants.dart';
 import 'package:arctekko/infrastructure/dal/daos/user.dao.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
@@ -32,17 +30,7 @@ class Initializer {
     connect.timeout = Duration(seconds: 10);
     connect.httpClient.maxAuthRetries = 3;
     connect.httpClient.addAuthenticator((request) async {
-      GetStorage storage = Get.find();
-      if (storage.hasData(StorageConstants.TOKEN_AUTHORIZATION) &&
-          storage.hasData(StorageConstants.TOKEN_EXPIRATION)) {
-        var token = storage.read(StorageConstants.TOKEN_AUTHORIZATION);
-        var expiration = storage.read(StorageConstants.TOKEN_EXPIRATION);
-        var date = DateTime.parse(expiration);
-        var tokenModel = TokenModel(token: token, expiration: date);
-        if (tokenModel.isValid) {
-          request.headers['Authorization'] = "Bearer $token";
-        }
-      }
+      // TODO: Adicionar refresh token, caso falhar deslogar usuario
       return request;
     });
 

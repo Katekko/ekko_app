@@ -30,4 +30,15 @@ class AuthDomainService {
       rethrow;
     }
   }
+
+  Future<UserModel> getUser() async {
+    try {
+      var response = await _repository.getUser();
+      var user = UserModel.fromData(response);
+      await user.save();
+      return user;
+    } catch (err) {
+      rethrow;
+    }
+  }
 }
