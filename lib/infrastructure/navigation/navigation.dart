@@ -11,5 +11,10 @@ class Nav {
       page: () => LoginScreen(),
       binding: LoginControllerBinding(),
     ),
+    GetPage(
+      name: Routes.HOME,
+      page: () => HomeScreen(),
+      binding: HomeControllerBinding(),
+    ),    
   ];
 }

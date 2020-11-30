@@ -33,10 +33,40 @@ class AuthDomainService {
 
   Future<UserModel> getUser() async {
     try {
-      var response = await _repository.getUser();
+      var response = await _repository.getUserInfo();
       var user = UserModel.fromData(response);
       await user.save();
       return user;
+    } catch (err) {
+      rethrow;
+    }
+  }
+
+  Future<bool> isAuthenticated() async {
+    try {
+      var hasToken = _repository.hasToken();
+      if (hasToken) {
+        var tokenData = _repository.getAuthToken();
+        var token = TokenModel.fromData(tokenData);
+        token.save();
+      }
+
+      var hasUser = await _repository.hasUserSaved();
+      if (hasToken && hasUser) {
+        return true;
+      } else {
+        await logoutUser();
+      }
+      return hasToken && hasUser;
+    } catch (err) {
+      rethrow;
+    }
+  }
+
+  Future<void> logoutUser() async {
+    try {
+      await _repository.clearHive();
+      await _repository.clearStorage();
     } catch (err) {
       rethrow;
     }

@@ -28,8 +28,15 @@ class TokenModel {
         var date = expiration.toString();
         storage.write(StorageConstants.TOKEN_EXPIRATION, date);
 
-        // GetConnect connect = Get.find();
-        // // TODO: Adicionar token no get connect
+        GetConnect connect = Get.find();
+        connect.httpClient.addRequestModifier(
+          (request) {
+            request.headers['Authorization'] = 'Bearer $token';
+            return request;
+          },
+        );
+
+        Get.put(connect);
       } else {
         throw InvalidTokenException();
       }

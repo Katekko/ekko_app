@@ -1,9 +1,10 @@
 import 'package:arctekko/domain/auth/auth.domain.service.dart';
-import 'package:arctekko/domain/auth/models/user.model.dart';
 import 'package:arctekko/domain/core/exceptions/user_not_found.exception.dart';
 import 'package:arctekko/domain/core/utils/snackbar.util.dart';
+import 'package:arctekko/infrastructure/navigation/routes.dart';
 import 'package:arctekko/presentation/shared/loading/loading.controller.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginController extends GetxController {
@@ -16,18 +17,23 @@ class LoginController extends GetxController {
         _loadingController = loadingController;
 
   @override
-  void onInit() async {
+  void onInit() {
     super.onInit();
+    ever<String>(login, validateLogin);
+    ever<String>(password, validatePassword);
+  }
+
+  Future<void> doLogin() async {
     try {
       _loadingController.isLoading = true;
-      // var user = await _authDomainService.authenticateUser(
-      //   login: 'contato@gyanburuworld.com',
-      //   password: '123456',
-      // );
+      if (validateFields()) {
+        await _authDomainService.authenticateUser(
+          login: login.value,
+          password: password.value,
+        );
 
-      var user = await _authDomainService.getUser();
-
-      this.user.value = user;
+        Get.offAllNamed(Routes.HOME);
+      }
     } on UserNotFoundException catch (err) {
       SnackbarUtil.showWarning(message: err.toString());
     } catch (err) {
@@ -37,5 +43,42 @@ class LoginController extends GetxController {
     }
   }
 
-  final user = Rx<UserModel>();
+  bool validateFields() {
+    validateLogin(password.value);
+    validatePassword(password.value);
+
+    return enableButton;
+  }
+
+  final login = ''.obs;
+  final loginError = RxString();
+  final loginFocus = FocusNode();
+  void validateLogin(String val) {
+    if (val.isEmpty) {
+      loginError.value = 'Digite seu login';
+    } else if (val.length < 3) {
+      loginError.value = 'Login inválido';
+    } else {
+      loginError.nil();
+    }
+  }
+
+  final password = ''.obs;
+  final passwordError = RxString();
+  final passwordFocus = FocusNode();
+  void validatePassword(String val) {
+    if (val.isEmpty) {
+      passwordError.value = 'Digite sua senha';
+    } else if (val.length < 3) {
+      passwordError.value = 'Senha inválida, no mínimo 3 caracters.';
+    } else {
+      passwordError.nil();
+    }
+  }
+
+  bool get enableButton =>
+      !login.value.isNullOrBlank &&
+      loginError.value.isNullOrBlank &&
+      !password.value.isNullOrBlank &&
+      passwordError.value.isNullOrBlank;
 }

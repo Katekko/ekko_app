@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
 
 class ColorsTheme {
-  static Color primaryColor = Color(0xFF4B5C28);
+  static Color primaryColor = Colors.purpleAccent[700];
 }

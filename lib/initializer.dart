@@ -1,4 +1,6 @@
+import 'package:arctekko/domain/core/utils/snackbar.util.dart';
 import 'package:arctekko/infrastructure/dal/daos/user.dao.dart';
+import 'package:arctekko/infrastructure/navigation/bindings/domains/auth.domain.binding.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
@@ -7,6 +9,7 @@ import 'package:hive/hive.dart';
 import 'package:logger/logger.dart';
 
 import 'config.dart';
+import 'infrastructure/navigation/routes.dart';
 import 'presentation/shared/loading/loading.controller.dart';
 
 class Initializer {
@@ -28,11 +31,20 @@ class Initializer {
     var url = ConfigEnvironments.getEnvironments()['url'];
     connect.baseUrl = url;
     connect.timeout = Duration(seconds: 10);
-    connect.httpClient.maxAuthRetries = 3;
-    connect.httpClient.addAuthenticator((request) async {
-      // TODO: Adicionar refresh token, caso falhar deslogar usuario
-      return request;
-    });
+    connect.httpClient.maxAuthRetries = 0;
+
+    connect.httpClient.addResponseModifier(
+      (request, response) async {
+        if (response.statusCode == 401) {
+          var authDomainBinding = AuthDomainBinding();
+          await authDomainBinding.domain.logoutUser();
+          Get.offAllNamed(Routes.LOGIN);
+          SnackbarUtil.showWarning(
+            message: 'Faça login novamente para continuar utilizando o sistema',
+          );
+        }
+      },
+    );
 
     Logger().i('Conectado em: $url');
     Get.put(connect);
