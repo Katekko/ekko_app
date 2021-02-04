@@ -64,25 +64,24 @@ class AuthDomainRepository {
   TokenData getAuthToken() {
     try {
       final token = _storage.read(StorageConstants.TOKEN_AUTHORIZATION);
-      final expiration = _storage.read(StorageConstants.TOKEN_EXPIRATION);
-      return TokenData(token: token, expiration: DateTime.parse(expiration));
+      return TokenData(token: token);
     } catch (err) {
       rethrow;
     }
   }
 
-  Future<UserDao> getSavedUser() async {
+  UserDao getSavedUser() {
     try {
-      var users = await UserDao().selectAll();
+      var users = UserDao().selectAll();
       return users.first;
     } catch (err) {
       rethrow;
     }
   }
 
-  Future<bool> hasUserSaved() async {
+  bool hasUserSaved() {
     try {
-      var users = await UserDao().selectAll();
+      var users = UserDao().selectAll();
       return users.isNotEmpty;
     } catch (err) {
       rethrow;
@@ -97,9 +96,9 @@ class AuthDomainRepository {
     }
   }
 
-  Future<void> clearHive() async {
+  void clearDatabase() {
     try {
-      await UserDao().clear();
+      UserDao().clear();
     } catch (err) {
       rethrow;
     }

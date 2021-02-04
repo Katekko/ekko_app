@@ -23,7 +23,7 @@ class AuthDomainService {
       token.save();
 
       var user = UserModel.fromData(response.user);
-      await user.save();
+      user.save();
 
       return user;
     } catch (err) {
@@ -35,7 +35,7 @@ class AuthDomainService {
     try {
       var response = await _repository.getUserInfo();
       var user = UserModel.fromData(response);
-      await user.save();
+      user.save();
       return user;
     } catch (err) {
       rethrow;
@@ -51,7 +51,7 @@ class AuthDomainService {
         token.save();
       }
 
-      var hasUser = await _repository.hasUserSaved();
+      var hasUser = _repository.hasUserSaved();
       if (hasToken && hasUser) {
         return true;
       } else {
@@ -65,8 +65,8 @@ class AuthDomainService {
 
   Future<void> logoutUser() async {
     try {
-      await _repository.clearHive();
-      await _repository.clearStorage();
+      _repository.clearDatabase();
+      _repository.clearStorage();
     } catch (err) {
       rethrow;
     }

@@ -1,11 +1,10 @@
 import 'package:arctekko/domain/core/utils/snackbar.util.dart';
-import 'package:arctekko/infrastructure/dal/daos/user.dao.dart';
 import 'package:arctekko/infrastructure/navigation/bindings/domains/auth.domain.binding.dart';
+import 'package:arctekko/objectbox.g.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:hive/hive.dart';
 import 'package:logger/logger.dart';
 
 import 'config.dart';
@@ -20,7 +19,7 @@ class Initializer {
       _initGetConnect();
       _initGlobalLoading();
       _initScreenPreference();
-      await _initHive();
+      await _initObjectBox();
     } catch (err) {
       rethrow;
     }
@@ -60,11 +59,17 @@ class Initializer {
     Get.put(GetStorage());
   }
 
-  static Future<void> _initHive() async {
-    var dir = await getApplicationDocumentsDirectory();
-    Hive
-      ..init(dir.path)
-      ..registerAdapter(UserDaoAdapter());
+  static Future<void> _initObjectBox() async {
+    try {
+      var dir = await getApplicationDocumentsDirectory();
+      var store = Store(
+        getObjectBoxModel(),
+        directory: dir.path + '/objectbox',
+      );
+      Get.put(store);
+    } catch (err) {
+      rethrow;
+    }
   }
 
   static void _initScreenPreference() {

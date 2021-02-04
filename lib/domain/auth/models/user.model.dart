@@ -15,9 +15,9 @@ class UserModel {
     return UserModel(id: data.id, name: data.name, email: data.email);
   }
 
-  Future<void> save() async {
+  void save() {
     var dao = toDao();
-    await dao.save();
+    dao.save(dao);
   }
 
   UserDao toDao() {
