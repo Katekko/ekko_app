@@ -2,7 +2,7 @@
 
 ## Um boirlerplate para salvar seu tempo quando for desenvolver alguma aplicação nova.  
 
->**Objective**  
+>**Objetivo**  
 > - Facilitar rápidos desenvolvimento de soluções.    
 > - Padronizar o desenvolvimento das suas aplicações, sejam elas pequenas ou grandes.  
 > - Abstrair bibliotecas para você apenas utiliza-las sem dor de cabeça.
@@ -13,8 +13,8 @@
 - Fácil navegação com injeções de dependencias utilizando GetX
 - Configuração de ambientes (backend)
 - Loading global
-- Utilizando HIVE para controlar a database local
-- Utilizando RETROFIT para fazer suas requisições para suas APIS
+- Utilizando OBJECTBOX para controlar a database local
+- Utilizando GetConnect (GetX) para fazer suas requisições para suas APIS
 - Utilizando GetX para traduzir seu app por rotas
 
 ## Libs
@@ -24,19 +24,18 @@ Controla diversos aspectos do seu aplicativo:
 - Injeção de dependencia
 - Controle de estado
 - Traduções
-#### Dio / Retrofit
-- Utilizados para fazer requisições (api/backend/web)
+#### Get Connect
+- Ultilado para fazer requisições para seu backend (api/backend/web)
 #### Logger
 - Utilizado apenas para controle de log
 #### GetStorage
 - O GetStorage é o precursor do sharedpreference, utilize ele para armazenar dados usando um armazenamento ultra rapido de chave/valor
-#### Hive
-- O HIVE é um banco de dados NoSql utilizado para armazenar dados localmente, utilize em conjunto com o base_dao (classe utilizada para abstrair os metodos do HIVE).
+#### ObjectBox
+- O ObjectBox é um banco de dados NoSql utilizado para armazenar dados localmente, utilize em conjunto com o base_dao (mixin utilizado para abstrair os metodos do ObjectBox). Para saber mais: https://github.com/objectbox/objectbox-dart
 #### DARQ
 - Biblioteca auxiliar para ajudar gerenciar listas em seu aplicativo
 
 ## TODOs
-- Criar autenticação de ponta a ponta utilizando JWT
 - Criar organização para utilizar WEB SOCKETS
 - Criar exemplos de aplicações utilizando essa estrutura
 
