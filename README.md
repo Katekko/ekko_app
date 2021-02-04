@@ -2,7 +2,7 @@
 
 ## Um boirlerplate para salvar seu tempo quando for desenvolver alguma aplicação nova.  
 
->**Objective**  
+>**Objetivo**  
 > - Facilitar rápidos desenvolvimento de soluções.    
 > - Padronizar o desenvolvimento das suas aplicações, sejam elas pequenas ou grandes.  
 > - Abstrair bibliotecas para você apenas utiliza-las sem dor de cabeça.
