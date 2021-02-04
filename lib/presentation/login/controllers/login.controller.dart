@@ -27,6 +27,8 @@ class LoginController extends GetxController {
     try {
       _loadingController.isLoading = true;
       if (validateFields()) {
+        Get.focusScope.unfocus();
+
         await _authDomainService.authenticateUser(
           login: login.value,
           password: password.value,

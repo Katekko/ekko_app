@@ -3,11 +3,11 @@ import 'package:objectbox/objectbox.dart';
 
 @Entity()
 class UserDao with BaseDao<UserDao> {
-  int id;
+  int id, serverId;
   String name;
   String email;
 
-  UserDao({this.id, this.name, this.email});
+  UserDao({this.id, this.name, this.email, this.serverId});
 
   @override
   int get tableId => id;

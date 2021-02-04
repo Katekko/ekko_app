@@ -29,7 +29,7 @@ class Initializer {
     var connect = GetConnect();
     var url = ConfigEnvironments.getEnvironments()['url'];
     connect.baseUrl = url;
-    connect.timeout = Duration(seconds: 10);
+    connect.timeout = Duration(seconds: 20);
     connect.httpClient.maxAuthRetries = 0;
 
     connect.httpClient.addResponseModifier(
