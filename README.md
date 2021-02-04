@@ -13,7 +13,7 @@
 - Fácil navegação com injeções de dependencias utilizando GetX
 - Configuração de ambientes (backend)
 - Loading global
-- Utilizando HIVE para controlar a database local
+- Utilizando OBJECTBOX para controlar a database local
 - Utilizando RETROFIT para fazer suas requisições para suas APIS
 - Utilizando GetX para traduzir seu app por rotas
 
