@@ -30,13 +30,12 @@ Controla diversos aspectos do seu aplicativo:
 - Utilizado apenas para controle de log
 #### GetStorage
 - O GetStorage é o precursor do sharedpreference, utilize ele para armazenar dados usando um armazenamento ultra rapido de chave/valor
-#### Hive
-- O HIVE é um banco de dados NoSql utilizado para armazenar dados localmente, utilize em conjunto com o base_dao (classe utilizada para abstrair os metodos do HIVE).
+#### ObjectBox
+- O ObjectBox é um banco de dados NoSql utilizado para armazenar dados localmente, utilize em conjunto com o base_dao (mixin utilizado para abstrair os metodos do ObjectBox). Para saber mais: https://github.com/objectbox/objectbox-dart
 #### DARQ
 - Biblioteca auxiliar para ajudar gerenciar listas em seu aplicativo
 
 ## TODOs
-- Criar autenticação de ponta a ponta utilizando JWT
 - Criar organização para utilizar WEB SOCKETS
 - Criar exemplos de aplicações utilizando essa estrutura
 
