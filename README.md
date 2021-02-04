@@ -14,7 +14,7 @@
 - Configuração de ambientes (backend)
 - Loading global
 - Utilizando OBJECTBOX para controlar a database local
-- Utilizando RETROFIT para fazer suas requisições para suas APIS
+- Utilizando GetConnect (GetX) para fazer suas requisições para suas APIS
 - Utilizando GetX para traduzir seu app por rotas
 
 ## Libs
@@ -24,8 +24,8 @@ Controla diversos aspectos do seu aplicativo:
 - Injeção de dependencia
 - Controle de estado
 - Traduções
-#### Dio / Retrofit
-- Utilizados para fazer requisições (api/backend/web)
+#### Get Connect
+- Ultilado para fazer requisições para seu backend (api/backend/web)
 #### Logger
 - Utilizado apenas para controle de log
 #### GetStorage
