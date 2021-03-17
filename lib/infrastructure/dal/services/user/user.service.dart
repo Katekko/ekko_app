@@ -5,8 +5,9 @@ import 'package:get/get.dart';
 
 class UserService {
   final GetConnect _connect;
-  final String _prefix = 'user';
   const UserService({required GetConnect connect}) : _connect = connect;
+
+  String get _prefix => 'user';
 
   Future<GetUserInfoResponse> getUserInfo() async {
     final response = await _connect.get(
@@ -21,7 +22,7 @@ class UserService {
     } else {
       switch (response.statusCode) {
         default:
-          throw DefaultException(message: response.statusText);
+          throw DefaultException(message: response.body!.error!);
       }
     }
   }

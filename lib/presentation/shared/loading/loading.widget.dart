@@ -16,7 +16,7 @@ class LoadingWidget extends GetWidget<LoadingController> {
                     dismissible: false,
                     color: Colors.grey.withOpacity(.3),
                   ),
-                  Center(
+                  const Center(
                     child: CircularProgressIndicator(
                       valueColor: AlwaysStoppedAnimation(Colors.grey),
                     ),
@@ -24,7 +24,7 @@ class LoadingWidget extends GetWidget<LoadingController> {
                 ],
               ),
             )
-          : SizedBox();
+          : const SizedBox();
     });
   }
 }

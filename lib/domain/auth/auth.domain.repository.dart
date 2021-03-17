@@ -29,12 +29,12 @@ class AuthDomainRepository {
     required String password,
   }) async {
     try {
-      var body = AuthenticateUserBody(login: login, password: password);
-      var response = await _authService.authenticateUser(body);
+      final body = AuthenticateUserBody(login: login, password: password);
+      final response = await _authService.authenticateUser(body);
       if (response.success) {
         return response.data!;
       } else {
-        throw DefaultException(message: response.error);
+        throw DefaultException(message: response.error!);
       }
     } catch (err) {
       rethrow;
@@ -43,11 +43,11 @@ class AuthDomainRepository {
 
   Future<UserData> getUserInfo() async {
     try {
-      var response = await _userService.getUserInfo();
+      final response = await _userService.getUserInfo();
       if (response.success) {
         return response.data!.user;
       } else {
-        throw DefaultException(message: response.error);
+        throw DefaultException(message: response.error!);
       }
     } catch (err) {
       rethrow;
@@ -62,10 +62,14 @@ class AuthDomainRepository {
     }
   }
 
-  TokenData getAuthToken() {
+  TokenData? getAuthToken() {
     try {
-      final token = _storage.read(StorageConstants.TOKEN_AUTHORIZATION);
-      return TokenData(token);
+      final token = _storage.read<String>(
+        StorageConstants.TOKEN_AUTHORIZATION,
+      );
+      if (token != null) {
+        return TokenData(token);
+      }
     } catch (err) {
       rethrow;
     }
@@ -73,7 +77,7 @@ class AuthDomainRepository {
 
   UserDao getSavedUser() {
     try {
-      var users = BaseDao.selectAll<UserDao>();
+      final users = BaseDao.selectAll<UserDao>();
       return users.first;
     } catch (err) {
       rethrow;
@@ -82,7 +86,7 @@ class AuthDomainRepository {
 
   bool hasUserSaved() {
     try {
-      var users = BaseDao.selectAll<UserDao>();
+      final users = BaseDao.selectAll<UserDao>();
       return users.isNotEmpty;
     } catch (err) {
       rethrow;

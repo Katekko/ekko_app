@@ -1,7 +1,7 @@
 import 'package:logger/logger.dart';
 
 class DefaultException implements Exception {
-  final String? message;
+  final String message;
   final StackTrace? stackTrace;
   DefaultException({
     this.message = 'Erro ao carregar dados, verifique sua internet!',
@@ -10,7 +10,6 @@ class DefaultException implements Exception {
     Logger().e(stackTrace);
   }
 
-  String toString() {
-    return '$message';
-  }
+  @override
+  String toString() => message;
 }

@@ -26,17 +26,17 @@ class Initializer {
     }
   }
 
-  static void _initGetConnect() async {
-    var connect = GetConnect();
-    var url = ConfigEnvironments.getEnvironments()['url'];
+  static Future<void> _initGetConnect() async {
+    final connect = GetConnect();
+    final url = ConfigEnvironments.getEnvironments()['url'];
     connect.baseUrl = url;
-    connect.timeout = Duration(seconds: 20);
+    connect.timeout = const Duration(seconds: 20);
     connect.httpClient.maxAuthRetries = 0;
 
     connect.httpClient.addResponseModifier(
       (request, response) async {
         if (response.statusCode == 401) {
-          var authDomainBinding = AuthDomainBinding();
+          final authDomainBinding = AuthDomainBinding();
           await authDomainBinding.domain!.logoutUser();
           Get.offAllNamed(Routes.LOGIN);
           SnackbarUtil.showWarning(
@@ -51,7 +51,7 @@ class Initializer {
   }
 
   static void _initGlobalLoading() {
-    var loading = LoadingController();
+    final loading = LoadingController();
     Get.put(loading);
   }
 
@@ -62,10 +62,10 @@ class Initializer {
 
   static Future<void> _initObjectBox() async {
     try {
-      var dir = await getApplicationDocumentsDirectory();
-      var store = Store(
+      final dir = await getApplicationDocumentsDirectory();
+      final store = Store(
         getObjectBoxModel(),
-        directory: dir.path + '/objectbox',
+        directory: '${dir.path}/objectbox',
       );
       Get.put(store);
     } catch (err) {

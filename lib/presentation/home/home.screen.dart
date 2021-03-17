@@ -10,14 +10,14 @@ class HomeScreen extends GetView<HomeController> {
     return BaseWidget(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('HomeScreen'),
+          title: const Text('HomeScreen'),
           centerTitle: true,
         ),
         body: Center(
           child: Obx(
             () => Text(
               'Logado com: ${controller.user.value?.name ?? 'Ops'}',
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
           ),
         ),

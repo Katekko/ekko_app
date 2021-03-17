@@ -10,7 +10,7 @@ class LoginButtonWidget extends GetView<LoginController> {
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Get.theme?.primaryColor),
       ),
-      child: SizedBox(
+      child: const SizedBox(
         height: 60,
         width: double.infinity,
         child: Center(

@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-AppBarTheme appBarTheme = AppBarTheme();
+AppBarTheme appBarTheme = const AppBarTheme();

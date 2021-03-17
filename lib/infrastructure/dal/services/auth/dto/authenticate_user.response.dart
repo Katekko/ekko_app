@@ -17,7 +17,7 @@ class AuthenticateUserResponse {
     required this.error,
   });
 
-  factory AuthenticateUserResponse.fromJson(json) =>
+  factory AuthenticateUserResponse.fromJson(Map<String, dynamic> json) =>
       _$AuthenticateUserResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$AuthenticateUserResponseToJson(this);
@@ -29,7 +29,8 @@ class DataResponse {
   final TokenData token;
   const DataResponse({required this.user, required this.token});
 
-  factory DataResponse.fromJson(json) => _$DataResponseFromJson(json);
+  factory DataResponse.fromJson(Map<String, dynamic> json) =>
+      _$DataResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$DataResponseToJson(this);
 }

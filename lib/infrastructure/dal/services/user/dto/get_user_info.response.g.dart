@@ -26,7 +26,7 @@ Map<String, dynamic> _$GetUserInfoResponseToJson(
 
 DataResponse _$DataResponseFromJson(Map<String, dynamic> json) {
   return DataResponse(
-    user: UserData.fromJson(json['user']),
+    user: UserData.fromJson(json['user'] as Map<String, dynamic>),
   );
 }
 

@@ -6,7 +6,7 @@ import './../../../../presentation/home/controllers/home.controller.dart';
 class HomeControllerBinding extends Bindings {
   @override
   void dependencies() {
-    var authDomainBinding = AuthDomainBinding();
+    final authDomainBinding = AuthDomainBinding();
 
     Get.lazyPut<HomeController>(
       () => HomeController(

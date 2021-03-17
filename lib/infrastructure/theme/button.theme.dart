@@ -1,3 +1,3 @@
 import 'package:flutter/material.dart';
 
-ButtonThemeData buttonTheme = ButtonThemeData();
+ButtonThemeData buttonTheme = const ButtonThemeData();

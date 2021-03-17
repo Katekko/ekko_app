@@ -29,6 +29,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  lint: ^1.5.3
   build_runner: ^1.12.1
   json_serializable: ^4.0.0
   objectbox_generator: 0.13.0-nullsafety.2

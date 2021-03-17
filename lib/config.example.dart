@@ -6,8 +6,8 @@ class Environments {
 }
 
 class ConfigEnvironments {
-  static final String _currentEnvironments = Environments.PRODUCTION;
-  static List<Map<String, String>> _availableEnvironments = [
+  static const String _currentEnvironments = Environments.PRODUCTION;
+  static const List<Map<String, String>> _availableEnvironments = [
     {
       'env': Environments.LOCAL,
       'url': 'http://192.168.0.2:5000/api/',

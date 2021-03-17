@@ -9,8 +9,9 @@ import 'dto/authenticate_user.response.dart';
 
 class AuthService {
   final GetConnect _connect;
-  final String _prefix = 'auth';
   const AuthService({required GetConnect connect}) : _connect = connect;
+
+  String get _prefix => 'auth';
 
   Future<AuthenticateUserResponse> authenticateUser(
     AuthenticateUserBody body,
@@ -32,7 +33,7 @@ class AuthService {
             message: LoginTranslate.userPasswordWrongSnackbar,
           );
         default:
-          throw DefaultException(message: response.statusText);
+          throw DefaultException(message: response.body!.error!);
       }
     }
   }

@@ -10,12 +10,12 @@ class AuthDomainBinding {
   AuthDomainService? get domain => _authDomainService;
 
   AuthDomainBinding() {
-    GetConnect connect = Get.find();
-    GetStorage storage = Get.find();
+    final connect = Get.find<GetConnect>();
+    final storage = Get.find<GetStorage>();
 
-    var authService = AuthService(connect: connect);
-    var userService = UserService(connect: connect);
-    var authDomainRepository = AuthDomainRepository(
+    final authService = AuthService(connect: connect);
+    final userService = UserService(connect: connect);
+    final authDomainRepository = AuthDomainRepository(
       authService: authService,
       userService: userService,
       storage: storage,

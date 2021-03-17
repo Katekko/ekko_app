@@ -15,7 +15,7 @@ class LoginTextFieldWidget extends GetView<LoginController> {
           controller.passwordFocus.requestFocus();
         },
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           errorText: controller.loginError.value,
           hintText: 'Login',
           hintStyle: Get.textTheme?.headline6?.copyWith(color: Colors.black54),

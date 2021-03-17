@@ -17,7 +17,7 @@ ModelDefinition getObjectBoxModel() {
     "entities": [
       {
         "id": "1:1434198125164529165",
-        "lastPropertyId": "4:7032422934236973737",
+        "lastPropertyId": "7:3214568860903399095",
         "name": "UserDao",
         "properties": [
           {
@@ -28,31 +28,31 @@ ModelDefinition getObjectBoxModel() {
             "dartFieldType": "int?"
           },
           {
-            "id": "2:898596441690418681",
+            "id": "5:7739502241060260460",
+            "name": "serverId",
+            "type": 6,
+            "dartFieldType": "int?"
+          },
+          {
+            "id": "6:4908367951482217610",
             "name": "name",
             "type": 9,
             "dartFieldType": "String"
           },
           {
-            "id": "3:4497255579484860231",
+            "id": "7:3214568860903399095",
             "name": "email",
             "type": 9,
             "dartFieldType": "String"
-          },
-          {
-            "id": "4:7032422934236973737",
-            "name": "serverId",
-            "type": 6,
-            "dartFieldType": "int?"
           }
         ],
         "relations": [],
         "backlinks": [],
         "constructorParams": [
-          "id named",
-          "serverId named",
           "name named",
-          "email named"
+          "email named",
+          "id named",
+          "serverId named"
         ],
         "nullSafetyEnabled": true
       }
@@ -76,11 +76,11 @@ ModelDefinition getObjectBoxModel() {
       objectToFB: (UserDao object, fb.Builder fbb) {
         final offsetname = fbb.writeString(object.name);
         final offsetemail = fbb.writeString(object.email);
-        fbb.startTable(5);
+        fbb.startTable(8);
         fbb.addInt64(0, object.id ?? 0);
-        fbb.addOffset(1, offsetname);
-        fbb.addOffset(2, offsetemail);
-        fbb.addInt64(3, object.serverId);
+        fbb.addInt64(4, object.serverId);
+        fbb.addOffset(5, offsetname);
+        fbb.addOffset(6, offsetemail);
         fbb.finish(fbb.endTable());
         return object.id ?? 0;
       },
@@ -89,11 +89,11 @@ ModelDefinition getObjectBoxModel() {
         final rootOffset = buffer.derefObject(0);
 
         final object = UserDao(
+            name: fb.StringReader().vTableGet(buffer, rootOffset, 14, ''),
+            email: fb.StringReader().vTableGet(buffer, rootOffset, 16, ''),
             id: fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4),
             serverId:
-                fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 10),
-            name: fb.StringReader().vTableGet(buffer, rootOffset, 6, ''),
-            email: fb.StringReader().vTableGet(buffer, rootOffset, 8, ''));
+                fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 12));
 
         return object;
       });
@@ -104,10 +104,10 @@ ModelDefinition getObjectBoxModel() {
 class UserDao_ {
   static final id =
       QueryIntegerProperty(entityId: 1, propertyId: 1, obxType: 6);
-  static final name =
-      QueryStringProperty(entityId: 1, propertyId: 2, obxType: 9);
-  static final email =
-      QueryStringProperty(entityId: 1, propertyId: 3, obxType: 9);
   static final serverId =
-      QueryIntegerProperty(entityId: 1, propertyId: 4, obxType: 6);
+      QueryIntegerProperty(entityId: 1, propertyId: 5, obxType: 6);
+  static final name =
+      QueryStringProperty(entityId: 1, propertyId: 6, obxType: 9);
+  static final email =
+      QueryStringProperty(entityId: 1, propertyId: 7, obxType: 9);
 }

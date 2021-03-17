@@ -15,7 +15,7 @@ mixin BaseDao<T> {
   /// Need help to work better here
   int save(T dao) {
     try {
-      var id = _box<T>().put(dao);
+      final id = _box<T>().put(dao);
       return id;
     } catch (err) {
       rethrow;
@@ -25,7 +25,7 @@ mixin BaseDao<T> {
   /// Select all the objectss
   static List<T> selectAll<T>() {
     try {
-      var all = _box<T>().getAll();
+      final all = _box<T>().getAll();
       return all;
     } catch (err) {
       rethrow;
@@ -35,7 +35,7 @@ mixin BaseDao<T> {
   /// Select by id
   static T? selectById<T>(int id) {
     try {
-      var object = _box<T>().get(id);
+      final object = _box<T>().get(id);
       return object;
     } catch (err) {
       rethrow;
@@ -84,7 +84,7 @@ mixin BaseDao<T> {
   /// Return true if was sucess otherwise false
   static bool deleteMany<T>(List<BaseDao<T>> items) {
     try {
-      var ids = items.map((e) => e.tableId!).toList();
+      final ids = items.map((e) => e.tableId!).toList();
       return _box<T>().removeMany(ids) > 0;
     } catch (err) {
       rethrow;
@@ -94,7 +94,7 @@ mixin BaseDao<T> {
   /// Delete the object itself
   bool delete() {
     try {
-      return _box<T>().remove(this.tableId!);
+      return _box<T>().remove(tableId!);
     } catch (err) {
       rethrow;
     }

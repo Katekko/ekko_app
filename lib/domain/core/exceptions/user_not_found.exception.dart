@@ -6,5 +6,6 @@ class UserNotFoundException implements Exception {
     Logger().w(message);
   }
 
+  @override
   String toString() => message;
 }

@@ -1,5 +1,6 @@
 import 'package:ekko/domain/auth/auth.domain.service.dart';
 import 'package:ekko/domain/auth/models/user.model.dart';
+import 'package:ekko/domain/core/utils/snackbar.util.dart';
 import 'package:ekko/presentation/shared/loading/loading.controller.dart';
 
 import 'package:get/get.dart';
@@ -15,15 +16,17 @@ class HomeController extends GetxController {
         _loadingController = loadingController;
 
   @override
-  void onReady() async {
+  Future<void> onReady() async {
     super.onReady();
     try {
       _loadingController.isLoading = true;
-      this.user.value = await _authDomainService.getUser();
-    } catch (err) {} finally {
+      user.value = await _authDomainService.getUser();
+    } catch (err) {
+      SnackbarUtil.showError(message: err.toString());
+    } finally {
       _loadingController.isLoading = false;
     }
   }
 
-  var user = Rx<UserModel>();
+  final user = Rx<UserModel>();
 }

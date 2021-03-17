@@ -2,13 +2,13 @@ import 'package:logger/logger.dart';
 
 class InternetFailedException implements Exception {
   final String message;
-  final StackTrace? stackTrace;
-  InternetFailedException(
-      {this.message = 'Falha ao conectar com o servidor!', this.stackTrace}) {
-    Logger().e(stackTrace);
+
+  InternetFailedException({
+    this.message = 'Falha ao conectar com o servidor!',
+  }) {
+    Logger().w(message);
   }
 
-  String toString() {
-    return '$message';
-  }
+  @override
+  String toString() => message;
 }

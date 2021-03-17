@@ -11,12 +11,12 @@ class TokenModel {
     return TokenModel(token: data.token);
   }
 
-  void save() {
+  Future<void> save() async {
     try {
-      GetStorage storage = Get.find();
-      storage.write(StorageConstants.TOKEN_AUTHORIZATION, token);
+      final storage = Get.find<GetStorage>();
+      await storage.write(StorageConstants.TOKEN_AUTHORIZATION, token);
 
-      GetConnect connect = Get.find();
+      final connect = Get.find<GetConnect>();
       connect.httpClient.addRequestModifier<dynamic>(
         (request) {
           request.headers['Authorization'] = 'Bearer $token';

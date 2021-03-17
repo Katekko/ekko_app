@@ -8,7 +8,12 @@ class UserDao with BaseDao<UserDao> {
   String name;
   String email;
 
-  UserDao({this.id, this.serverId, required this.name, required this.email});
+  UserDao({
+    required this.name,
+    required this.email,
+    this.id,
+    this.serverId,
+  });
 
   @override
   int? get tableId => id;

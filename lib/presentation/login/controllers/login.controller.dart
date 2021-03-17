@@ -17,6 +17,7 @@ class LoginController extends GetxController {
         _loadingController = loadingController;
 
   @override
+  // ignore: unnecessary_overrides
   void onInit() {
     super.onInit();
     // TODO(katekko): Wating for the update from getx

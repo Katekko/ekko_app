@@ -10,8 +10,8 @@ class AuthenticateUserBody {
   AuthenticateUserBody({
     required String login,
     required String password,
-  })   : this.login = login.trim(),
-        this.password = password.trim();
+  })   : login = login.trim(),
+        password = password.trim();
 
   factory AuthenticateUserBody.fromJson(Map<String, dynamic> json) =>
       _$AuthenticateUserBodyFromJson(json);

@@ -7,7 +7,8 @@ class TokenData {
   final String token;
   const TokenData(this.token);
 
-  factory TokenData.fromJson(json) => _$TokenDataFromJson(json);
+  factory TokenData.fromJson(Map<String, dynamic> json) =>
+      _$TokenDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$TokenDataToJson(this);
 }

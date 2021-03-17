@@ -13,15 +13,15 @@ class AuthDomainService {
     required String password,
   }) async {
     try {
-      var response = await _repository.validateUserPassword(
+      final response = await _repository.validateUserPassword(
         login: login,
         password: password,
       );
 
-      var token = TokenModel.fromData(response.token);
+      final token = TokenModel.fromData(response.token);
       token.save();
 
-      var user = UserModel.fromData(response.user);
+      final user = UserModel.fromData(response.user);
       user.save();
 
       return user;
@@ -32,8 +32,8 @@ class AuthDomainService {
 
   Future<UserModel> getUser() async {
     try {
-      var response = await _repository.getUserInfo();
-      var user = UserModel.fromData(response);
+      final response = await _repository.getUserInfo();
+      final user = UserModel.fromData(response);
       user.save();
       return user;
     } catch (err) {
@@ -43,19 +43,22 @@ class AuthDomainService {
 
   Future<bool> isAuthenticated() async {
     try {
-      var hasToken = _repository.hasToken();
+      final hasToken = _repository.hasToken();
       if (hasToken) {
-        var tokenData = _repository.getAuthToken();
-        var token = TokenModel.fromData(tokenData);
-        token.save();
+        final tokenData = _repository.getAuthToken();
+        if (tokenData != null) {
+          final token = TokenModel.fromData(tokenData);
+          token.save();
+        }
       }
 
-      var hasUser = _repository.hasUserSaved();
+      final hasUser = _repository.hasUserSaved();
       if (hasToken && hasUser) {
         return true;
       } else {
         await logoutUser();
       }
+
       return hasToken && hasUser;
     } catch (err) {
       rethrow;

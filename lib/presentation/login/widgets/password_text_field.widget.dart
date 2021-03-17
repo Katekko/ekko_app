@@ -13,7 +13,7 @@ class PasswordTextFieldWidget extends GetView<LoginController> {
         textInputAction: TextInputAction.done,
         onFieldSubmitted: (_) => controller.doLogin(),
         decoration: InputDecoration(
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           errorText: controller.passwordError.value,
           hintText: 'Password',
           hintStyle: Get.textTheme?.headline6?.copyWith(color: Colors.black54),

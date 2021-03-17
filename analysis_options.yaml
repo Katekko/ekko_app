@@ -1,0 +1,27 @@
+include: package:lint/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - lib/**/*.g.dart
+    - lib/generated_plugin_registrant.dart
+
+linter:
+  rules:
+    avoid_classes_with_only_static_members: false
+
+    prefer_single_quotes: true
+    prefer_double_quotes: false
+    always_specify_types: false
+    lines_longer_than_80_chars: true
+    argument_type_not_assignable: false
+    constant_identifier_names: false
+    flutter_style_todos: true
+    avoid_print: true
+    avoid_type_to_string: true
+    always_put_required_named_parameters_first: true
+    always_require_non_null_named_parameters: true
+    annotate_overrides: true
+    avoid_as: false
+    avoid_double_and_int_checks: true
+    avoid_field_initializers_in_const_classes: true
+    sort_pub_dependencies: false

@@ -13,7 +13,8 @@ class UserData {
     required this.email,
   });
 
-  factory UserData.fromJson(json) => _$UserDataFromJson(json);
+  factory UserData.fromJson(Map<String, dynamic> json) =>
+      _$UserDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$UserDataToJson(this);
 }

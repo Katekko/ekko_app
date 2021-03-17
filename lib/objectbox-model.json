@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:1434198125164529165",
-      "lastPropertyId": "4:7032422934236973737",
+      "lastPropertyId": "7:3214568860903399095",
       "name": "UserDao",
       "properties": [
         {
@@ -15,19 +15,19 @@
           "flags": 1
         },
         {
-          "id": "2:898596441690418681",
+          "id": "5:7739502241060260460",
+          "name": "serverId",
+          "type": 6
+        },
+        {
+          "id": "6:4908367951482217610",
           "name": "name",
           "type": 9
         },
         {
-          "id": "3:4497255579484860231",
+          "id": "7:3214568860903399095",
           "name": "email",
           "type": 9
-        },
-        {
-          "id": "4:7032422934236973737",
-          "name": "serverId",
-          "type": 6
         }
       ],
       "relations": []
@@ -41,7 +41,11 @@
   "modelVersionParserMinimum": 5,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    898596441690418681,
+    4497255579484860231,
+    7032422934236973737
+  ],
   "retiredRelationUids": [],
   "version": 1
 }

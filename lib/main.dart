@@ -9,15 +9,15 @@ import 'infrastructure/theme/theme.dart';
 import 'infrastructure/translate/translate.dart';
 import 'initializer.dart';
 
-void main() async {
+Future<void> main() async {
   await Initializer.init();
-  var initialRoute = await Routes.initialRoute;
+  final initialRoute = await Routes.initialRoute;
   runApp(Main(initialRoute));
 }
 
 class Main extends StatelessWidget {
   final String initialRoute;
-  Main(this.initialRoute);
+  const Main(this.initialRoute);
 
   @override
   Widget build(BuildContext context) {
@@ -28,10 +28,10 @@ class Main extends StatelessWidget {
           initialRoute: initialRoute,
           getPages: Nav.routes,
           theme: themeData,
-          supportedLocales: [Locale('pt', 'BR'), Locale('en')],
-          locale: Locale('pt', 'BR'),
+          supportedLocales: const [Locale('pt', 'BR'), Locale('en')],
+          locale: const Locale('pt', 'BR'),
           translations: Translate(),
-          localizationsDelegates: [
+          localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
@@ -47,7 +47,7 @@ class EnvironmentsBadge extends StatelessWidget {
   const EnvironmentsBadge({required this.child});
   @override
   Widget build(BuildContext context) {
-    var env = ConfigEnvironments.getEnvironments()['env'];
+    final env = ConfigEnvironments.getEnvironments()['env'];
     return env != Environments.PRODUCTION
         ? Banner(
             location: BannerLocation.topStart,

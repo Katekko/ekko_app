@@ -34,16 +34,16 @@ class UserModel with LocalId, ServerId {
   }
 
   void save() {
-    var dao = toDao();
+    final dao = toDao();
     dao.save(dao);
   }
 
   UserDao toDao() {
-    var dao = UserDao(
-      id: this.databaseId,
-      serverId: this.serverId,
-      email: this.email,
-      name: this.name,
+    final dao = UserDao(
+      id: databaseId,
+      serverId: serverId,
+      email: email,
+      name: name,
     );
     return dao;
   }
