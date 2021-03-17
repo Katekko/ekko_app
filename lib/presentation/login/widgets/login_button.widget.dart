@@ -6,9 +6,11 @@ class LoginButtonWidget extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => RaisedButton(
+      () => ElevatedButton(
         onPressed: controller.enableButton ? controller.doLogin : null,
-        color: Get.theme.primaryColor,
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Get.theme.primaryColor),
+        ),
         child: SizedBox(
           height: 60,
           width: double.infinity,
