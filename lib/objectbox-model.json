@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:1434198125164529165",
-      "lastPropertyId": "3:4497255579484860231",
+      "lastPropertyId": "4:7032422934236973737",
       "name": "UserDao",
       "properties": [
         {
@@ -23,6 +23,11 @@
           "id": "3:4497255579484860231",
           "name": "email",
           "type": 9
+        },
+        {
+          "id": "4:7032422934236973737",
+          "name": "serverId",
+          "type": 6
         }
       ],
       "relations": []

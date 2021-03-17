@@ -1,4 +1,4 @@
-import 'package:arctekko/presentation/shared/loading/base.widget.dart';
+import 'package:ekko/presentation/shared/loading/base.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +16,7 @@ class HomeScreen extends GetView<HomeController> {
         body: Center(
           child: Obx(
             () => Text(
-              'Logado com: ${controller.user?.value?.name ?? 'Ops'}',
+              'Logado com: ${controller.user.value?.name ?? 'Ops'}',
               style: TextStyle(fontSize: 20),
             ),
           ),

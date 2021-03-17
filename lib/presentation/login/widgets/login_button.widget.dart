@@ -1,4 +1,4 @@
-import 'package:arctekko/presentation/login/controllers/login.controller.dart';
+import 'package:ekko/presentation/login/controllers/login.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,7 +9,7 @@ class LoginButtonWidget extends GetView<LoginController> {
       () => ElevatedButton(
         onPressed: controller.enableButton ? controller.doLogin : null,
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Get.theme.primaryColor),
+          backgroundColor: MaterialStateProperty.all(Get.theme?.primaryColor),
         ),
         child: SizedBox(
           height: 60,

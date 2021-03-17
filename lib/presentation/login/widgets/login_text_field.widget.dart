@@ -1,4 +1,4 @@
-import 'package:arctekko/presentation/login/controllers/login.controller.dart';
+import 'package:ekko/presentation/login/controllers/login.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,9 +18,7 @@ class LoginTextFieldWidget extends GetView<LoginController> {
           border: OutlineInputBorder(),
           errorText: controller.loginError.value,
           hintText: 'Login',
-          hintStyle: Get.textTheme.headline6.copyWith(
-            color: Colors.black54,
-          ),
+          hintStyle: Get.textTheme?.headline6?.copyWith(color: Colors.black54),
         ),
       ),
     );

@@ -8,7 +8,7 @@ part of 'token.data.dart';
 
 TokenData _$TokenDataFromJson(Map<String, dynamic> json) {
   return TokenData(
-    token: json['token'] as String,
+    json['token'] as String,
   );
 }
 

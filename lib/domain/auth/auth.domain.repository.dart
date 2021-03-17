@@ -1,13 +1,14 @@
-import 'package:arctekko/domain/core/constants/storage.constants.dart';
-import 'package:arctekko/domain/core/exceptions/default.exception.dart';
-import 'package:arctekko/infrastructure/dal/daos/user.dao.dart';
-import 'package:arctekko/infrastructure/dal/services/auth/auth.service.dart';
-import 'package:arctekko/infrastructure/dal/services/auth/data/token.data.dart';
-import 'package:arctekko/infrastructure/dal/services/auth/dto/authenticate_user.body.dart';
-import 'package:arctekko/infrastructure/dal/services/auth/dto/authenticate_user.response.dart';
-import 'package:arctekko/infrastructure/dal/services/data/user.data.dart';
-import 'package:arctekko/infrastructure/dal/services/user/user.service.dart';
-import 'package:flutter/foundation.dart';
+import 'package:ekko/domain/core/constants/storage.constants.dart';
+import 'package:ekko/domain/core/exceptions/default.exception.dart';
+import 'package:ekko/domain/core/mixins/dao.mixin.dart';
+import 'package:ekko/infrastructure/dal/daos/user.dao.dart';
+import 'package:ekko/infrastructure/dal/services/auth/auth.service.dart';
+import 'package:ekko/infrastructure/dal/services/auth/data/token.data.dart';
+import 'package:ekko/infrastructure/dal/services/auth/dto/authenticate_user.body.dart';
+import 'package:ekko/infrastructure/dal/services/auth/dto/authenticate_user.response.dart';
+import 'package:ekko/infrastructure/dal/services/data/user.data.dart';
+import 'package:ekko/infrastructure/dal/services/user/user.service.dart';
+
 import 'package:get_storage/get_storage.dart';
 
 class AuthDomainRepository {
@@ -16,16 +17,16 @@ class AuthDomainRepository {
   final GetStorage _storage;
 
   const AuthDomainRepository({
-    @required AuthService authService,
-    @required UserService userService,
-    @required GetStorage storage,
-  })  : _authService = authService,
+    required AuthService authService,
+    required UserService userService,
+    required GetStorage storage,
+  })   : _authService = authService,
         _userService = userService,
         _storage = storage;
 
   Future<DataResponse> validateUserPassword({
-    @required String login,
-    @required String password,
+    required String login,
+    required String password,
   }) async {
     try {
       var body = AuthenticateUserBody(login: login, password: password);
@@ -44,7 +45,7 @@ class AuthDomainRepository {
     try {
       var response = await _userService.getUserInfo();
       if (response.success) {
-        return response.data.user;
+        return response.data!.user;
       } else {
         throw DefaultException(message: response.error);
       }
@@ -64,7 +65,7 @@ class AuthDomainRepository {
   TokenData getAuthToken() {
     try {
       final token = _storage.read(StorageConstants.TOKEN_AUTHORIZATION);
-      return TokenData(token: token);
+      return TokenData(token);
     } catch (err) {
       rethrow;
     }
@@ -72,7 +73,7 @@ class AuthDomainRepository {
 
   UserDao getSavedUser() {
     try {
-      var users = UserDao().selectAll();
+      var users = BaseDao.selectAll<UserDao>();
       return users.first;
     } catch (err) {
       rethrow;
@@ -81,7 +82,7 @@ class AuthDomainRepository {
 
   bool hasUserSaved() {
     try {
-      var users = UserDao().selectAll();
+      var users = BaseDao.selectAll<UserDao>();
       return users.isNotEmpty;
     } catch (err) {
       rethrow;
@@ -98,7 +99,7 @@ class AuthDomainRepository {
 
   void clearDatabase() {
     try {
-      UserDao().clear();
+      BaseDao.clear<UserDao>();
     } catch (err) {
       rethrow;
     }

@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user.data.g.dart';
@@ -9,9 +8,9 @@ class UserData {
   final String name, email;
 
   UserData({
-    @required this.id,
-    @required this.name,
-    @required this.email,
+    required this.id,
+    required this.name,
+    required this.email,
   });
 
   factory UserData.fromJson(json) => _$UserDataFromJson(json);

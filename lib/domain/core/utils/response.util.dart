@@ -1,5 +1,5 @@
-// import 'package:arctekko/domain/core/exceptions/default.exception.dart';
-// import 'package:arctekko/domain/core/exceptions/invalid_body.exception.dart';
+// import 'package:ekko/domain/core/exceptions/default.exception.dart';
+// import 'package:ekko/domain/core/exceptions/invalid_body.exception.dart';
 // import 'package:dio/dio.dart';
 
 // class ResponseUtil {

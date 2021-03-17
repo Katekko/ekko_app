@@ -1,14 +1,15 @@
-import 'package:arctekko/domain/core/mixins/dao.interface.dart';
+import 'package:ekko/domain/core/mixins/dao.mixin.dart';
 import 'package:objectbox/objectbox.dart';
 
 @Entity()
 class UserDao with BaseDao<UserDao> {
-  int id, serverId;
+  int? id;
+  int? serverId;
   String name;
   String email;
 
-  UserDao({this.id, this.name, this.email, this.serverId});
+  UserDao({this.id, this.serverId, required this.name, required this.email});
 
   @override
-  int get tableId => id;
+  int? get tableId => id;
 }

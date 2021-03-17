@@ -1,19 +1,21 @@
-import 'package:arctekko/objectbox.g.dart';
-import 'package:flutter/foundation.dart';
+import 'package:ekko/objectbox.g.dart';
+
 import 'package:get/get.dart' as g;
 import 'package:objectbox/internal.dart';
 
 mixin BaseDao<T> {
-  int get tableId;
+  int? get tableId;
 
   static final _store = g.Get.find<Store>();
-  final _box = _store.box<T>();
+  static Box<T> _box<T>() {
+    return _store.box<T>();
+  }
 
   /// Save the DAO and return the ID of object that was saved
   /// Need help to work better here
   int save(T dao) {
     try {
-      var id = _box.put(dao);
+      var id = _box<T>().put(dao);
       return id;
     } catch (err) {
       rethrow;
@@ -21,9 +23,9 @@ mixin BaseDao<T> {
   }
 
   /// Select all the objectss
-  List<T> selectAll() {
+  static List<T> selectAll<T>() {
     try {
-      var all = _box.getAll();
+      var all = _box<T>().getAll();
       return all;
     } catch (err) {
       rethrow;
@@ -31,9 +33,9 @@ mixin BaseDao<T> {
   }
 
   /// Select by id
-  T selectById() {
+  static T? selectById<T>(int id) {
     try {
-      var object = _box.get(tableId);
+      var object = _box<T>().get(id);
       return object;
     } catch (err) {
       rethrow;
@@ -41,20 +43,20 @@ mixin BaseDao<T> {
   }
 
   /// Select by query
-  List<T> select({
-    @required Condition condition,
-    QueryProperty orderBy,
-    int orderByFlag,
+  static List<T> select<T>({
+    required Condition condition,
+    QueryProperty? orderBy,
+    int? orderByFlag,
   }) {
     try {
       Query<T> query;
       List<T> results;
       if (orderBy == null) {
-        query = _box.query(condition).build();
+        query = _box<T>().query(condition).build();
         results = query.find();
         query.close();
-      } else if (orderBy != null) {
-        query = _box
+      } else {
+        query = _box<T>()
             .query(condition)
             .order(orderBy, flags: orderByFlag ?? 0)
             .build();
@@ -69,31 +71,35 @@ mixin BaseDao<T> {
   }
 
   /// Pass ID to delete the ITEM that match the ID
-  ///
-  /// Pass the items to delete a range of items
-  ///
-  /// Pass nothing to use the object's id itself
-  ///
   /// Return true if was sucess otherwise false
-  bool delete({int id, List<BaseDao<T>> items}) {
+  static bool deleteById<T>(int id) {
     try {
-      bool success = false;
+      return _box<T>().remove(id);
+    } catch (err) {
+      rethrow;
+    }
+  }
 
-      if (id != null) {
-        success = _box.remove(id);
-      } else if (items != null) {
-        var ids = items.map((e) => e.tableId);
-        success = _box.removeMany(ids) > 0;
-      } else {
-        success = _box.remove(this.tableId);
-      }
+  /// Pass the items to delete a range of items
+  /// Return true if was sucess otherwise false
+  static bool deleteMany<T>(List<BaseDao<T>> items) {
+    try {
+      var ids = items.map((e) => e.tableId!).toList();
+      return _box<T>().removeMany(ids) > 0;
+    } catch (err) {
+      rethrow;
+    }
+  }
 
-      return success;
+  /// Delete the object itself
+  bool delete() {
+    try {
+      return _box<T>().remove(this.tableId!);
     } catch (err) {
       rethrow;
     }
   }
 
   /// Clear this table
-  void clear() => _box.removeAll();
+  static void clear<T>() => _box<T>().removeAll();
 }

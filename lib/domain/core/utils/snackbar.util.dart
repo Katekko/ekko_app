@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class SnackbarUtil {
   static void showSuccess({
-    @required String message,
+    required String message,
   }) {
     Get.rawSnackbar(
       title: 'Success',
@@ -12,12 +12,12 @@ class SnackbarUtil {
         color: Colors.white,
       ),
       message: message,
-      backgroundColor: Colors.green[600],
+      backgroundColor: Colors.green.shade600,
     );
   }
 
   static void showWarning({
-    @required String message,
+    required String message,
   }) {
     Get.rawSnackbar(
       title: 'Warning',
@@ -26,12 +26,12 @@ class SnackbarUtil {
         color: Colors.white,
       ),
       message: message,
-      backgroundColor: Colors.orange[900],
+      backgroundColor: Colors.orange.shade900,
     );
   }
 
   static void showError({
-    @required String message,
+    required String message,
   }) {
     Get.rawSnackbar(
       title: 'Error',
@@ -40,7 +40,7 @@ class SnackbarUtil {
         color: Colors.white,
       ),
       message: message,
-      backgroundColor: Colors.redAccent[700],
+      backgroundColor: Colors.redAccent.shade700,
     );
   }
 }

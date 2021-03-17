@@ -1,6 +1,6 @@
-import 'package:arctekko/infrastructure/dal/services/auth/data/token.data.dart';
-import 'package:arctekko/infrastructure/dal/services/data/user.data.dart';
-import 'package:flutter/foundation.dart';
+import 'package:ekko/infrastructure/dal/services/auth/data/token.data.dart';
+import 'package:ekko/infrastructure/dal/services/data/user.data.dart';
+
 import 'package:json_annotation/json_annotation.dart';
 
 part 'authenticate_user.response.g.dart';
@@ -12,9 +12,9 @@ class AuthenticateUserResponse {
   final String error;
 
   const AuthenticateUserResponse({
-    @required this.success,
-    @required this.data,
-    @required this.error,
+    required this.success,
+    required this.data,
+    required this.error,
   });
 
   factory AuthenticateUserResponse.fromJson(json) =>
@@ -27,7 +27,7 @@ class AuthenticateUserResponse {
 class DataResponse {
   final UserData user;
   final TokenData token;
-  const DataResponse({@required this.user, @required this.token});
+  const DataResponse({required this.user, required this.token});
 
   factory DataResponse.fromJson(json) => _$DataResponseFromJson(json);
 

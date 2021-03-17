@@ -1,12 +1,12 @@
-name: arctekko
-description: A new Flutter project.
+name: ekko
+description: A boilerplate for your project starts right.
 
 publish_to: 'none'
 
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -14,20 +14,24 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   
-  get: ^3.21.1
-  logger: ^0.9.4
-  get_storage: ^1.3.2
-  objectbox: ^0.11.0
-  objectbox_flutter_libs: ^0.11.0
-  darq: ^0.4.0+1
+  get: ^4.0.0-nullsafety.2
+  get_storage: ^2.0.1
+  objectbox: ^0.13.0-nullsafety.2
+  objectbox_flutter_libs: ^0.13.0-nullsafety.2
+  logger: ^1.0.0-nullsafety.0
+  darq: ^1.0.0-dev.3
+  path_provider: ^2.0.1
+
+dependency_overrides:
+  build: ^2.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  build_runner: ^1.10.4
-  json_serializable: ^3.5.0
-  objectbox_generator: any
+  build_runner: ^1.12.1
+  json_serializable: ^4.0.0
+  objectbox_generator: 0.13.0-nullsafety.2
 
 flutter:
   uses-material-design: true

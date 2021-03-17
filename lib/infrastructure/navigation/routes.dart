@@ -4,7 +4,7 @@ class Routes {
   static Future<String> get initialRoute async {
     try {
       var authDomainService = AuthDomainBinding().domain;
-      var authenticated = await authDomainService.isAuthenticated();
+      var authenticated = await authDomainService!.isAuthenticated();
       return !authenticated ? LOGIN : HOME;
     } catch (err) {
       return LOGIN;

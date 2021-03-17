@@ -1,4 +1,4 @@
-import 'package:arctekko/presentation/shared/loading/base.widget.dart';
+import 'package:ekko/presentation/shared/loading/base.widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +17,7 @@ class LoginScreen extends GetView<LoginController> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('EKKO APP', style: Get.textTheme.headline3),
+              Text('EKKO APP', style: Get.textTheme?.headline3),
               SizedBox(height: 50),
               LoginTextFieldWidget(),
               SizedBox(height: 10),

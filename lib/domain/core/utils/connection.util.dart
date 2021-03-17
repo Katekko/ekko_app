@@ -1,5 +1,5 @@
-// import 'package:arctekko/domain/core/exceptions/internet_failed.exception.dart';
-// import 'package:arctekko/domain/core/exceptions/time_out.exception.dart';
+// import 'package:ekko/domain/core/exceptions/internet_failed.exception.dart';
+// import 'package:ekko/domain/core/exceptions/time_out.exception.dart';
 // import 'package:dio/dio.dart';
 
 // class ConnectionUtil {

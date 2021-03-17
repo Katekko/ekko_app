@@ -1,4 +1,4 @@
-import 'package:arctekko/presentation/login/controllers/login.controller.dart';
+import 'package:ekko/presentation/login/controllers/login.controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,9 +16,7 @@ class PasswordTextFieldWidget extends GetView<LoginController> {
           border: OutlineInputBorder(),
           errorText: controller.passwordError.value,
           hintText: 'Password',
-          hintStyle: Get.textTheme.headline6.copyWith(
-            color: Colors.black54,
-          ),
+          hintStyle: Get.textTheme?.headline6?.copyWith(color: Colors.black54),
         ),
       ),
     );

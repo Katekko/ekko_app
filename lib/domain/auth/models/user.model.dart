@@ -1,24 +1,24 @@
-import 'package:arctekko/infrastructure/dal/daos/user.dao.dart';
-import 'package:arctekko/infrastructure/dal/services/data/user.data.dart';
-import 'package:flutter/foundation.dart';
+import 'package:ekko/domain/core/mixins/local_id.mixin.dart';
+import 'package:ekko/domain/core/mixins/server_id.mixin.dart';
+import 'package:ekko/infrastructure/dal/daos/user.dao.dart';
+import 'package:ekko/infrastructure/dal/services/data/user.data.dart';
 
-class UserModel {
-  /// ID from local database
-  int id;
-
+class UserModel with LocalId, ServerId {
   String name, email;
-  int serverId;
 
   UserModel({
-    this.id,
-    @required this.name,
-    @required this.email,
-    @required this.serverId,
-  });
+    required this.name,
+    required this.email,
+    int? databaseId,
+    int? serverId,
+  }) {
+    this.databaseId = databaseId;
+    this.serverId = serverId;
+  }
 
   factory UserModel.fromDao(UserDao dao) {
     return UserModel(
-      id: dao.id,
+      databaseId: dao.id,
       serverId: dao.serverId,
       name: dao.name,
       email: dao.email,
@@ -39,7 +39,12 @@ class UserModel {
   }
 
   UserDao toDao() {
-    var dao = UserDao(id: this.id, email: this.email, name: this.name);
+    var dao = UserDao(
+      id: this.databaseId,
+      serverId: this.serverId,
+      email: this.email,
+      name: this.name,
+    );
     return dao;
   }
 }

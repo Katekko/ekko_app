@@ -12,7 +12,7 @@ GetUserInfoResponse _$GetUserInfoResponseFromJson(Map<String, dynamic> json) {
     data: json['data'] == null
         ? null
         : DataResponse.fromJson(json['data'] as Map<String, dynamic>),
-    error: json['error'] as String,
+    error: json['error'] as String?,
   );
 }
 
@@ -26,7 +26,7 @@ Map<String, dynamic> _$GetUserInfoResponseToJson(
 
 DataResponse _$DataResponseFromJson(Map<String, dynamic> json) {
   return DataResponse(
-    user: json['user'] == null ? null : UserData.fromJson(json['user']),
+    user: UserData.fromJson(json['user']),
   );
 }
 

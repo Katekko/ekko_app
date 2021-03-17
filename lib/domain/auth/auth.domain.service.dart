@@ -1,17 +1,16 @@
-import 'package:arctekko/domain/auth/models/token.model.dart';
-import 'package:arctekko/domain/auth/models/user.model.dart';
-import 'package:flutter/foundation.dart';
+import 'package:ekko/domain/auth/models/token.model.dart';
+import 'package:ekko/domain/auth/models/user.model.dart';
 
 import 'auth.domain.repository.dart';
 
 class AuthDomainService {
   final AuthDomainRepository _repository;
-  const AuthDomainService({@required AuthDomainRepository repository})
+  const AuthDomainService({required AuthDomainRepository repository})
       : _repository = repository;
 
   Future<UserModel> authenticateUser({
-    @required String login,
-    @required String password,
+    required String login,
+    required String password,
   }) async {
     try {
       var response = await _repository.validateUserPassword(

@@ -1,13 +1,13 @@
-import 'package:arctekko/domain/auth/auth.domain.repository.dart';
-import 'package:arctekko/domain/auth/auth.domain.service.dart';
-import 'package:arctekko/infrastructure/dal/services/auth/auth.service.dart';
-import 'package:arctekko/infrastructure/dal/services/user/user.service.dart';
+import 'package:ekko/domain/auth/auth.domain.repository.dart';
+import 'package:ekko/domain/auth/auth.domain.service.dart';
+import 'package:ekko/infrastructure/dal/services/auth/auth.service.dart';
+import 'package:ekko/infrastructure/dal/services/user/user.service.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 class AuthDomainBinding {
-  AuthDomainService _authDomainService;
-  AuthDomainService get domain => _authDomainService;
+  AuthDomainService? _authDomainService;
+  AuthDomainService? get domain => _authDomainService;
 
   AuthDomainBinding() {
     GetConnect connect = Get.find();
