@@ -5,14 +5,19 @@ import 'package:get/get.dart';
 
 class UserService {
   final GetConnect _connect;
-  UserService({required GetConnect connect}) : _connect = connect;
+  final String _prefix = 'user';
+  const UserService({required GetConnect connect}) : _connect = connect;
 
   Future<GetUserInfoResponse> getUserInfo() async {
-    var response = await _connect.get('user');
+    final response = await _connect.get(
+      _prefix,
+      decoder: (value) => GetUserInfoResponse.fromJson(
+        value as Map<String, dynamic>,
+      ),
+    );
 
     if (!response.hasError) {
-      var model = GetUserInfoResponse.fromJson(response.body);
-      return model;
+      return response.body!;
     } else {
       switch (response.statusCode) {
         default:

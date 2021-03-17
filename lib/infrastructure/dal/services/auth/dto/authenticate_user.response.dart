@@ -8,8 +8,8 @@ part 'authenticate_user.response.g.dart';
 @JsonSerializable()
 class AuthenticateUserResponse {
   final bool success;
-  final DataResponse data;
-  final String error;
+  final DataResponse? data;
+  final String? error;
 
   const AuthenticateUserResponse({
     required this.success,

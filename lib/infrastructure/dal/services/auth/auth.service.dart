@@ -9,16 +9,22 @@ import 'dto/authenticate_user.response.dart';
 
 class AuthService {
   final GetConnect _connect;
-  AuthService({required GetConnect connect}) : _connect = connect;
+  final String _prefix = 'auth';
+  const AuthService({required GetConnect connect}) : _connect = connect;
 
   Future<AuthenticateUserResponse> authenticateUser(
     AuthenticateUserBody body,
   ) async {
-    var response = await _connect.post('auth/login', body.toJson());
+    final response = await _connect.post(
+      '$_prefix/login',
+      body.toJson(),
+      decoder: (value) => AuthenticateUserResponse.fromJson(
+        value as Map<String, dynamic>,
+      ),
+    );
 
     if (!response.hasError) {
-      var model = AuthenticateUserResponse.fromJson(response.body);
-      return model;
+      return response.body!;
     } else {
       switch (response.statusCode) {
         case 404:

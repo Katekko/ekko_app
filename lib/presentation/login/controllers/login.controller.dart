@@ -19,8 +19,9 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    ever<String>(login, validateLogin);
-    ever<String>(password, validatePassword);
+    // TODO(katekko): Wating for the update from getx
+    // ever<String>(login, validateLogin);
+    // ever<String>(password, validatePassword);
   }
 
   Future<void> doLogin() async {
@@ -49,7 +50,10 @@ class LoginController extends GetxController {
     validateLogin(login.value!);
     validatePassword(password.value!);
 
-    return enableButton;
+    return login.isNotEmpty &&
+        password.isNotEmpty &&
+        loginError.value == null &&
+        passwordError.value == null;
   }
 
   final login = ''.obs;
@@ -78,9 +82,12 @@ class LoginController extends GetxController {
     }
   }
 
-  bool get enableButton =>
-      login.isNotEmpty &&
-      password.isNotEmpty &&
-      loginError.value != null &&
-      passwordError.value != null;
+  // TODO(katekko): Wating for the update from getx
+  // bool get enableButton =>
+  //     login.isNotEmpty &&
+  //     password.isNotEmpty &&
+  //     loginError.value != null &&
+  //     passwordError.value != null;
+
+  bool get enableButton => true;
 }

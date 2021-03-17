@@ -5,20 +5,18 @@ import 'package:get/get.dart';
 class LoginButtonWidget extends GetView<LoginController> {
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => ElevatedButton(
-        onPressed: controller.enableButton ? controller.doLogin : null,
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Get.theme?.primaryColor),
-        ),
-        child: SizedBox(
-          height: 60,
-          width: double.infinity,
-          child: Center(
-            child: Text(
-              'ENTER',
-              style: TextStyle(color: Colors.white, fontSize: 25),
-            ),
+    return ElevatedButton(
+      onPressed: controller.enableButton ? controller.doLogin : null,
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(Get.theme?.primaryColor),
+      ),
+      child: SizedBox(
+        height: 60,
+        width: double.infinity,
+        child: Center(
+          child: Text(
+            'ENTER',
+            style: TextStyle(color: Colors.white, fontSize: 25),
           ),
         ),
       ),

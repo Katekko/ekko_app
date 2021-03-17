@@ -32,7 +32,7 @@ class AuthDomainRepository {
       var body = AuthenticateUserBody(login: login, password: password);
       var response = await _authService.authenticateUser(body);
       if (response.success) {
-        return response.data;
+        return response.data!;
       } else {
         throw DefaultException(message: response.error);
       }

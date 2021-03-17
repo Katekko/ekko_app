@@ -14,17 +14,24 @@ class LoginScreen extends GetView<LoginController> {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.all(30),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('EKKO APP', style: Get.textTheme?.headline3),
-              SizedBox(height: 50),
-              LoginTextFieldWidget(),
-              SizedBox(height: 10),
-              PasswordTextFieldWidget(),
-              SizedBox(height: 20),
-              LoginButtonWidget(),
-            ],
+          child: Center(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 30, bottom: 30),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('EKKO APP', style: Get.textTheme?.headline3),
+                    SizedBox(height: 50),
+                    LoginTextFieldWidget(),
+                    SizedBox(height: 10),
+                    PasswordTextFieldWidget(),
+                    SizedBox(height: 20),
+                    LoginButtonWidget(),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ),
