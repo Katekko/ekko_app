@@ -19,8 +19,8 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    ever<String>(login as RxInterface<String>, validateLogin);
-    ever<String>(password as RxInterface<String>, validatePassword);
+    ever<String>(login, validateLogin);
+    ever<String>(password, validatePassword);
   }
 
   Future<void> doLogin() async {
