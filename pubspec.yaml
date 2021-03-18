@@ -18,7 +18,7 @@ dependencies:
   get_storage: ^2.0.1
   objectbox: ^0.13.0-nullsafety.2
   objectbox_flutter_libs: ^0.13.0-nullsafety.2
-  logger: ^1.0.0-nullsafety.0
+  logger: ^1.0.0
   darq: ^1.0.0-dev.3
   path_provider: ^2.0.1
 

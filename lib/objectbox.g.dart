@@ -6,11 +6,13 @@
 
 import 'dart:typed_data';
 
-import 'package:objectbox/objectbox.dart';
 import 'package:objectbox/flatbuffers/flat_buffers.dart' as fb;
-export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 import 'package:objectbox/internal.dart'; // generated code can access "internal" functionality
+import 'package:objectbox/objectbox.dart';
+
 import 'infrastructure/dal/daos/user.dao.dart';
+
+export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
 
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo.fromMap({
