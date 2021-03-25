@@ -76,13 +76,13 @@ ModelDefinition getObjectBoxModel() {
         object.id = id;
       },
       objectToFB: (UserDao object, fb.Builder fbb) {
-        final offsetname = fbb.writeString(object.name);
-        final offsetemail = fbb.writeString(object.email);
+        final nameOffset = fbb.writeString(object.name);
+        final emailOffset = fbb.writeString(object.email);
         fbb.startTable(8);
         fbb.addInt64(0, object.id ?? 0);
         fbb.addInt64(4, object.serverId);
-        fbb.addOffset(5, offsetname);
-        fbb.addOffset(6, offsetemail);
+        fbb.addOffset(5, nameOffset);
+        fbb.addOffset(6, emailOffset);
         fbb.finish(fbb.endTable());
         return object.id ?? 0;
       },
@@ -91,11 +91,12 @@ ModelDefinition getObjectBoxModel() {
         final rootOffset = buffer.derefObject(0);
 
         final object = UserDao(
-            name: fb.StringReader().vTableGet(buffer, rootOffset, 14, ''),
-            email: fb.StringReader().vTableGet(buffer, rootOffset, 16, ''),
-            id: fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4),
-            serverId:
-                fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 12));
+            name: const fb.StringReader().vTableGet(buffer, rootOffset, 14, ''),
+            email:
+                const fb.StringReader().vTableGet(buffer, rootOffset, 16, ''),
+            id: const fb.Int64Reader().vTableGetNullable(buffer, rootOffset, 4),
+            serverId: const fb.Int64Reader()
+                .vTableGetNullable(buffer, rootOffset, 12));
 
         return object;
       });

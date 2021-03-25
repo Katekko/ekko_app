@@ -16,14 +16,11 @@ dependencies:
   
   get: ^4.0.0-nullsafety.2
   get_storage: ^2.0.1
-  objectbox: ^0.13.0-nullsafety.2
-  objectbox_flutter_libs: ^0.13.0-nullsafety.2
+  objectbox: ^0.13.0
+  objectbox_flutter_libs: ^0.13.0
   logger: ^1.0.0
   darq: ^1.0.0-dev.3
   path_provider: ^2.0.1
-
-dependency_overrides:
-  build: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -31,8 +28,8 @@ dev_dependencies:
 
   lint: ^1.5.3
   build_runner: ^1.12.2
-  json_serializable: ^4.0.3
-  objectbox_generator: 0.13.0-nullsafety.2
+  json_serializable: ^4.1.0
+  objectbox_generator: ^0.13.0+1
 
 flutter:
   uses-material-design: true
