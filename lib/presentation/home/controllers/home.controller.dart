@@ -28,5 +28,5 @@ class HomeController extends GetxController {
     }
   }
 
-  final user = Rx<UserModel>();
+  final user = Rxn<UserModel>();
 }

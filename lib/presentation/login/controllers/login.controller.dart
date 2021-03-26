@@ -17,12 +17,10 @@ class LoginController extends GetxController {
         _loadingController = loadingController;
 
   @override
-  // ignore: unnecessary_overrides
   void onInit() {
     super.onInit();
-    // TODO(katekko): Wating for the update from getx
-    // ever<String>(login, validateLogin);
-    // ever<String>(password, validatePassword);
+    ever<String>(login, validateLogin);
+    ever<String>(password, validatePassword);
   }
 
   Future<void> doLogin() async {
@@ -32,8 +30,8 @@ class LoginController extends GetxController {
         Get.focusScope?.unfocus();
 
         await _authDomainService.authenticateUser(
-          login: login.value!,
-          password: password.value!,
+          login: login.value,
+          password: password.value,
         );
 
         Get.offAllNamed(Routes.HOME);
@@ -48,8 +46,8 @@ class LoginController extends GetxController {
   }
 
   bool validateFields() {
-    validateLogin(login.value!);
-    validatePassword(password.value!);
+    validateLogin(login.value);
+    validatePassword(password.value);
 
     return login.isNotEmpty &&
         password.isNotEmpty &&
@@ -58,7 +56,7 @@ class LoginController extends GetxController {
   }
 
   final login = ''.obs;
-  final loginError = RxString();
+  final loginError = RxnString();
   final loginFocus = FocusNode();
   void validateLogin(String val) {
     if (val.isEmpty) {
@@ -71,7 +69,7 @@ class LoginController extends GetxController {
   }
 
   final password = ''.obs;
-  final passwordError = RxString();
+  final passwordError = RxnString();
   final passwordFocus = FocusNode();
   void validatePassword(String val) {
     if (val.isEmpty) {
@@ -83,12 +81,9 @@ class LoginController extends GetxController {
     }
   }
 
-  // TODO(katekko): Wating for the update from getx
-  // bool get enableButton =>
-  //     login.isNotEmpty &&
-  //     password.isNotEmpty &&
-  //     loginError.value != null &&
-  //     passwordError.value != null;
-
-  bool get enableButton => true;
+  bool get enableButton =>
+      login.isNotEmpty &&
+      password.isNotEmpty &&
+      loginError.value != null &&
+      passwordError.value != null;
 }
