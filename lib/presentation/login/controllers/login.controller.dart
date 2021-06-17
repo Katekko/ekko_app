@@ -14,12 +14,10 @@ class LoginController extends GetxController {
       : _authRepository = authRepository;
 
   @override
-  // ignore: unnecessary_overrides
   void onInit() {
     super.onInit();
-    // TODO(katekko): Wating for the update from getx
-    // ever<String>(login, validateLogin);
-    // ever<String>(password, validatePassword);
+    ever<String>(login, validateLogin);
+    ever<String>(password, validatePassword);
   }
 
   Future<void> doLogin() async {
@@ -80,12 +78,9 @@ class LoginController extends GetxController {
     }
   }
 
-  // TODO(katekko): Wating for the update from getx
-  // bool get enableButton =>
-  //     login.isNotEmpty &&
-  //     password.isNotEmpty &&
-  //     loginError.value != null &&
-  //     passwordError.value != null;
-
-  bool get enableButton => true;
+  bool get enableButton =>
+      login.isNotEmpty &&
+      password.isNotEmpty &&
+      loginError.value != null &&
+      passwordError.value != null;
 }
