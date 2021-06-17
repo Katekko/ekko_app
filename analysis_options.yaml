@@ -12,7 +12,7 @@ linter:
     prefer_single_quotes: true
     prefer_double_quotes: false
     always_specify_types: false
-    lines_longer_than_80_chars: true
+    lines_longer_than_80_chars: false
     argument_type_not_assignable: false
     constant_identifier_names: false
     flutter_style_todos: true

@@ -1,4 +1,3 @@
-import 'package:ekko/infrastructure/dal/services/auth/data/token.data.dart';
 import 'package:ekko/infrastructure/dal/services/data/user.data.dart';
 
 import 'package:json_annotation/json_annotation.dart';
@@ -26,7 +25,7 @@ class AuthenticateUserResponse {
 @JsonSerializable()
 class DataResponse {
   final UserData user;
-  final TokenData token;
+  final String token;
   const DataResponse({required this.user, required this.token});
 
   factory DataResponse.fromJson(Map<String, dynamic> json) =>

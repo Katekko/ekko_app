@@ -8,7 +8,7 @@ class LoginButtonWidget extends GetView<LoginController> {
     return ElevatedButton(
       onPressed: controller.enableButton ? controller.doLogin : null,
       style: ButtonStyle(
-        backgroundColor: MaterialStateProperty.all(Get.theme?.primaryColor),
+        backgroundColor: MaterialStateProperty.all(Get.theme.primaryColor),
       ),
       child: const SizedBox(
         height: 60,

@@ -21,7 +21,7 @@ class LoginScreen extends GetView<LoginController> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('EKKO APP', style: Get.textTheme?.headline3),
+                    Text('EKKO APP', style: Get.textTheme.headline3),
                     const SizedBox(height: 50),
                     LoginTextFieldWidget(),
                     const SizedBox(height: 10),

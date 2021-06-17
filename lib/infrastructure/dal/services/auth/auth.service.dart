@@ -1,6 +1,7 @@
 import 'package:ekko/domain/core/exceptions/default.exception.dart';
 import 'package:ekko/domain/core/exceptions/user_not_found.exception.dart';
 import 'package:ekko/infrastructure/translate/login.translate.dart';
+import 'package:get/get.dart';
 
 import 'package:get/get_connect/connect.dart';
 
@@ -8,9 +9,7 @@ import 'dto/authenticate_user.body.dart';
 import 'dto/authenticate_user.response.dart';
 
 class AuthService {
-  final GetConnect _connect;
-  const AuthService({required GetConnect connect}) : _connect = connect;
-
+  final _connect = Get.find<GetConnect>();
   String get _prefix => 'auth';
 
   Future<AuthenticateUserResponse> authenticateUser(

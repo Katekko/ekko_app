@@ -18,7 +18,7 @@ class LoginTextFieldWidget extends GetView<LoginController> {
           border: const OutlineInputBorder(),
           errorText: controller.loginError.value,
           hintText: 'Login',
-          hintStyle: Get.textTheme?.headline6?.copyWith(color: Colors.black54),
+          hintStyle: Get.textTheme.headline6?.copyWith(color: Colors.black54),
         ),
       ),
     );

@@ -1,15 +1,15 @@
 import 'package:ekko/domain/core/utils/snackbar.util.dart';
-import 'package:ekko/infrastructure/navigation/bindings/domains/auth.domain.binding.dart';
+import 'package:ekko/infrastructure/navigation/bindings/domains/auth.repository.binding.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:logger/logger.dart';
-import 'package:path_provider/path_provider.dart';
 
 import 'config.dart';
+import 'domain/core/constants/storage.constants.dart';
 import 'infrastructure/navigation/routes.dart';
-import 'objectbox.g.dart';
+
 import 'presentation/shared/loading/loading.controller.dart';
 
 class Initializer {
@@ -20,7 +20,6 @@ class Initializer {
       _initGetConnect();
       _initGlobalLoading();
       _initScreenPreference();
-      await _initObjectBox();
     } catch (err) {
       rethrow;
     }
@@ -33,11 +32,22 @@ class Initializer {
     connect.timeout = const Duration(seconds: 20);
     connect.httpClient.maxAuthRetries = 0;
 
+    connect.httpClient.addRequestModifier<dynamic>(
+      (request) {
+        final storage = Get.find<GetStorage>();
+        final token = storage.read(StorageConstants.TOKEN_AUTHORIZATION);
+        if (token != null) {
+          request.headers['Authorization'] = 'Bearer $token';
+        }
+        return request;
+      },
+    );
+
     connect.httpClient.addResponseModifier(
       (request, response) async {
         if (response.statusCode == 401) {
-          final authDomainBinding = AuthDomainBinding();
-          await authDomainBinding.domain!.logoutUser();
+          final authDomainBinding = AuthRepositoryBinding();
+          await authDomainBinding.repository.logoutUser();
           Get.offAllNamed(Routes.LOGIN);
           SnackbarUtil.showWarning(
             message: 'Faça login novamente para continuar utilizando o sistema',
@@ -58,19 +68,6 @@ class Initializer {
   static Future<void> _initStorage() async {
     await GetStorage.init();
     Get.put(GetStorage());
-  }
-
-  static Future<void> _initObjectBox() async {
-    try {
-      final dir = await getApplicationDocumentsDirectory();
-      final store = Store(
-        getObjectBoxModel(),
-        directory: '${dir.path}/objectbox',
-      );
-      Get.put(store);
-    } catch (err) {
-      rethrow;
-    }
   }
 
   static void _initScreenPreference() {

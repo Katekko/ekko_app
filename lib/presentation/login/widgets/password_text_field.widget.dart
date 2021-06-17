@@ -16,7 +16,7 @@ class PasswordTextFieldWidget extends GetView<LoginController> {
           border: const OutlineInputBorder(),
           errorText: controller.passwordError.value,
           hintText: 'Password',
-          hintStyle: Get.textTheme?.headline6?.copyWith(color: Colors.black54),
+          hintStyle: Get.textTheme.headline6?.copyWith(color: Colors.black54),
         ),
       ),
     );

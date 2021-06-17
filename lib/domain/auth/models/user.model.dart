@@ -1,50 +1,23 @@
-import 'package:ekko/domain/core/mixins/local_id.mixin.dart';
-import 'package:ekko/domain/core/mixins/server_id.mixin.dart';
-import 'package:ekko/infrastructure/dal/daos/user.dao.dart';
 import 'package:ekko/infrastructure/dal/services/data/user.data.dart';
+import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
-class UserModel with LocalId, ServerId {
-  String name, email;
-
-  UserModel({
-    required this.name,
-    required this.email,
-    int? databaseId,
-    int? serverId,
-  }) {
-    this.databaseId = databaseId;
-    this.serverId = serverId;
-  }
-
-  factory UserModel.fromDao(UserDao dao) {
-    return UserModel(
-      databaseId: dao.id,
-      serverId: dao.serverId,
-      name: dao.name,
-      email: dao.email,
-    );
-  }
+class UserModel {
+  final String name, email;
+  const UserModel({required this.name, required this.email});
 
   factory UserModel.fromData(UserData data) {
-    return UserModel(
-      name: data.name,
-      email: data.email,
-      serverId: data.id,
-    );
+    return UserModel(name: data.name, email: data.email);
   }
 
-  void save() {
-    final dao = toDao();
-    dao.save(dao);
+  static UserModel? fromStorage() {
+    final storage = Get.find<GetStorage>();
+    final user = storage.read<UserModel>('user');
+    return user;
   }
 
-  UserDao toDao() {
-    final dao = UserDao(
-      id: databaseId,
-      serverId: serverId,
-      email: email,
-      name: name,
-    );
-    return dao;
+  Future<void> save() async {
+    final storage = Get.find<GetStorage>();
+    await storage.write('user', {'name': name, 'email': email});
   }
 }

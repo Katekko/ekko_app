@@ -28,7 +28,7 @@ Map<String, dynamic> _$AuthenticateUserResponseToJson(
 DataResponse _$DataResponseFromJson(Map<String, dynamic> json) {
   return DataResponse(
     user: UserData.fromJson(json['user'] as Map<String, dynamic>),
-    token: TokenData.fromJson(json['token'] as Map<String, dynamic>),
+    token: json['token'] as String,
   );
 }
 

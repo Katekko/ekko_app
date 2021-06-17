@@ -4,9 +4,7 @@ import 'package:ekko/infrastructure/dal/services/user/dto/get_user_info.response
 import 'package:get/get.dart';
 
 class UserService {
-  final GetConnect _connect;
-  const UserService({required GetConnect connect}) : _connect = connect;
-
+  final _connect = Get.find<GetConnect>();
   String get _prefix => 'user';
 
   Future<GetUserInfoResponse> getUserInfo() async {
