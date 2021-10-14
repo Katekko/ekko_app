@@ -7,14 +7,14 @@ import 'routes.dart';
 class Nav {
   static List<GetPage> routes = [
     GetPage(
-      name: Routes.LOGIN,
+      name: Routes.login,
       page: () => LoginScreen(),
       binding: LoginControllerBinding(),
     ),
     GetPage(
-      name: Routes.HOME,
+      name: Routes.home,
       page: () => HomeScreen(),
       binding: HomeControllerBinding(),
-    ),    
+    ),
   ];
 }

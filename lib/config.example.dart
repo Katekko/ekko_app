@@ -1,27 +1,27 @@
 class Environments {
-  static const String PRODUCTION = 'prod';
-  static const String QAS = 'QAS';
-  static const String DEV = 'dev';
-  static const String LOCAL = 'local';
+  static const String production = 'prod';
+  static const String homolog = 'homolog';
+  static const String develop = 'dev';
+  static const String local = 'local';
 }
 
 class ConfigEnvironments {
-  static const String _currentEnvironments = Environments.PRODUCTION;
+  static const String _currentEnvironments = Environments.production;
   static const List<Map<String, String>> _availableEnvironments = [
     {
-      'env': Environments.LOCAL,
+      'env': Environments.local,
       'url': 'http://192.168.0.2:5000/api/',
     },
     {
-      'env': Environments.DEV,
+      'env': Environments.develop,
       'url': '',
     },
     {
-      'env': Environments.QAS,
+      'env': Environments.homolog,
       'url': '',
     },
     {
-      'env': Environments.PRODUCTION,
+      'env': Environments.production,
       'url': 'https://api-ekko.herokuapp.com/api/',
     },
   ];

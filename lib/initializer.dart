@@ -35,7 +35,7 @@ class Initializer {
     connect.httpClient.addRequestModifier<dynamic>(
       (request) {
         final storage = Get.find<GetStorage>();
-        final token = storage.read(StorageConstants.TOKEN_AUTHORIZATION);
+        final token = storage.read(StorageConstants.tokenAuthorization);
         if (token != null) {
           request.headers['Authorization'] = 'Bearer $token';
         }
@@ -48,7 +48,7 @@ class Initializer {
         if (response.statusCode == 401) {
           final authDomainBinding = AuthRepositoryBinding();
           await authDomainBinding.repository.logoutUser();
-          Get.offAllNamed(Routes.LOGIN);
+          Get.offAllNamed(Routes.login);
           SnackbarUtil.showWarning(
             message: 'Faça login novamente para continuar utilizando o sistema',
           );

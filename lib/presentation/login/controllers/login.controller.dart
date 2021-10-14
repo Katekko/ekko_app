@@ -31,7 +31,7 @@ class LoginController extends GetxController {
           password: password.value,
         );
 
-        Get.offAllNamed(Routes.HOME);
+        Get.offAllNamed(Routes.home);
       }
     } on UserNotFoundException catch (err) {
       SnackbarUtil.showWarning(message: err.toString());

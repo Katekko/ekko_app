@@ -29,7 +29,7 @@ class AuthRepository {
       await user.save();
 
       await _storage.write(
-        StorageConstants.TOKEN_AUTHORIZATION,
+        StorageConstants.tokenAuthorization,
         response.data!.token,
       );
 
@@ -52,8 +52,8 @@ class AuthRepository {
 
   Future<bool> isAuthenticated() async {
     try {
-      final hasToken = _storage.hasData(StorageConstants.TOKEN_AUTHORIZATION);
-      final hasUser = _storage.hasData(StorageConstants.USER);
+      final hasToken = _storage.hasData(StorageConstants.tokenAuthorization);
+      final hasUser = _storage.hasData(StorageConstants.user);
       return hasToken && hasUser;
     } catch (err) {
       rethrow;

@@ -5,12 +5,12 @@ class Routes {
     try {
       final authDomainService = AuthRepositoryBinding().repository;
       final authenticated = await authDomainService.isAuthenticated();
-      return !authenticated ? LOGIN : HOME;
+      return !authenticated ? login : home;
     } catch (err) {
-      return LOGIN;
+      return login;
     }
   }
 
-  static const HOME = '/home';
-  static const LOGIN = '/login';
+  static const home = '/home';
+  static const login = '/login';
 }
