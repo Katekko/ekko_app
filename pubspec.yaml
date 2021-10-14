@@ -14,17 +14,17 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   
-  get: ^4.1.4
-  get_storage: ^2.0.2
-  logger: ^1.0.0
+  get: ^4.3.8
+  get_storage: ^2.0.3
+  logger: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^1.0.0
-  build_runner: ^1.12.2
-  json_serializable: ^4.0.3
+  flutter_lints: ^1.0.4
+  build_runner: ^2.1.4
+  json_serializable: ^5.0.2
 
 flutter:
   uses-material-design: true

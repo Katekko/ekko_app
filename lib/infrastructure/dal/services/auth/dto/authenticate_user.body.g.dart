@@ -6,12 +6,12 @@ part of 'authenticate_user.body.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-AuthenticateUserBody _$AuthenticateUserBodyFromJson(Map<String, dynamic> json) {
-  return AuthenticateUserBody(
-    login: json['login'] as String,
-    password: json['password'] as String,
-  );
-}
+AuthenticateUserBody _$AuthenticateUserBodyFromJson(
+        Map<String, dynamic> json) =>
+    AuthenticateUserBody(
+      login: json['login'] as String,
+      password: json['password'] as String,
+    );
 
 Map<String, dynamic> _$AuthenticateUserBodyToJson(
         AuthenticateUserBody instance) =>
