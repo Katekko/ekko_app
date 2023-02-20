@@ -2,9 +2,9 @@
 
 A arquitetura foi migrada, agora ela funciona com uma CLI chamada [MASON](https://pub.dev/packages/mason_cli). 
 
-# DEPRECATED
-
 Se você quiser fazer um teste atualmente como está, segue o repo: https://github.com/Katekko/ekko_brick
+
+# DEPRECATED
 
 # EKKO Boilerplate
 
